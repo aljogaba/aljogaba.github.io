@@ -1,20 +1,13 @@
-# Alberto Jorge Galindo Barboza
+# Personal Academic Website
 
-Personal academic website.
+This repository hosts the academic website of:
 
-Researcher at INIFAP working on:
+Alberto Jorge Galindo Barboza
+
+Researcher at INIFAP.
+
+Research areas:
 
 - PRRSV molecular epidemiology
-- Genetic characterization of PCV2
+- PCV2 genetic characterization
 - Swine production systems
-
-## Scientific profiles
-
-ORCID  
-https://orcid.org/0000-0003-4223-6161
-
-Google Scholar  
-https://scholar.google.com/citations?user=_pldFgEAAAAJ
-
-Semantic Scholar  
-https://www.semanticscholar.org/author/2327092786
