@@ -1,4 +1,3 @@
-# aljogaba.github.io
 # Alberto Jorge Galindo Barboza
 
 Personal academic website.
