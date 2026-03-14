@@ -17,3 +17,18 @@ ul {
   list-style-type: disc;
   margin-left: 20px;
 }
+.menu {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.menu li {
+  display: inline;
+}
+
+.menu a {
+  font-weight: bold;
+}
