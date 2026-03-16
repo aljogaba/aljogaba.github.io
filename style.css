@@ -67,7 +67,7 @@ a:hover {
   max-width: 550px;
 }
 
-/* Listas */
+/* Listas generales */
 
 ul {
   margin-left: 20px;
@@ -75,8 +75,20 @@ ul {
 
 /* Publicaciones */
 
-ul li {
-  margin-bottom: 8px;
+.publications li {
+  margin-bottom: 14px;
+}
+
+/* Proyectos */
+
+.projects li {
+  margin-bottom: 18px;
+}
+
+/* Resaltar título del proyecto */
+
+.projects li strong:first-child {
+  font-size: 1.05em;
 }
 
 /* Botón CV */
