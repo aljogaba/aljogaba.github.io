@@ -5,6 +5,7 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
   margin: 40px auto;
+  padding: 0 20px;
   max-width: 900px;
   line-height: 1.7;
   color: #333;
@@ -16,14 +17,14 @@ body {
 
 h1 {
   color: #2c3e50;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 h2 {
   margin-top: 40px;
   color: #2c3e50;
   border-bottom: 2px solid #eee;
-  padding-bottom: 5px;
+  padding-bottom: 6px;
 }
 
 /* =========================
@@ -60,6 +61,7 @@ a:hover {
   padding: 0;
   margin-bottom: 30px;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -103,6 +105,8 @@ a:hover {
 .profile-photo {
   width: 180px;
   border-radius: 10px;
+  max-width: 100%;
+  height: auto;
 }
 
 .profile-text {
@@ -132,8 +136,6 @@ ul {
 .projects li {
   margin-bottom: 18px;
 }
-
-/* resaltar ligeramente el título del proyecto */
 
 .projects li strong:first-child {
   font-size: 1.05em;
@@ -175,4 +177,13 @@ a[href$=".pdf"]:hover {
 .gallery-item p {
   margin-top: 8px;
   font-size: 0.9em;
+}
+
+/* =========================
+   Imágenes generales
+========================= */
+
+img {
+  max-width: 100%;
+  height: auto;
 }
