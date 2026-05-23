@@ -356,3 +356,328 @@ footer a:hover {
   background-position: center;
   background-repeat: no-repeat;
 }
+
+/* ========================================
+   MODERN PROFESSIONAL UPGRADE
+======================================== */
+
+/* ===== GLOBAL ===== */
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f4f7fb;
+  color: #1f2937;
+
+  max-width: 1180px;
+
+  margin: 0 auto;
+
+  padding: 0 24px 60px;
+}
+
+/* ===== NAVBAR ===== */
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(255,255,255,0.88);
+
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+
+  margin-bottom: 50px;
+}
+
+.menu {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 34px;
+
+  padding: 20px 10px;
+
+  margin-bottom: 0;
+}
+
+.menu a {
+  font-size: 0.96rem;
+
+  font-weight: 600;
+
+  color: #334155;
+
+  transition: all 0.25s ease;
+}
+
+.menu a:hover {
+  color: #0f4c81;
+}
+
+.menu a::after {
+  background-color: #0f4c81;
+}
+
+/* ===== HERO PROFILE ===== */
+
+.profile {
+  display: grid;
+
+  grid-template-columns: 280px 1fr;
+
+  align-items: center;
+
+  gap: 60px;
+
+  background: white;
+
+  padding: 60px;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.05);
+
+  margin-bottom: 60px;
+}
+
+.profile-photo {
+  width: 100%;
+
+  max-width: 280px;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.12);
+}
+
+.profile-text h1 {
+  font-size: 3rem;
+
+  line-height: 1.08;
+
+  margin-bottom: 24px;
+
+  color: #0f172a;
+}
+
+.profile-text p:first-of-type {
+  font-size: 1.08rem;
+
+  color: #334155;
+
+  margin-bottom: 18px;
+}
+
+.profile-text p:last-of-type {
+  color: #64748b;
+}
+
+/* ===== SECTIONS ===== */
+
+section {
+  background: white;
+
+  padding: 42px 50px;
+
+  border-radius: 22px;
+
+  margin-bottom: 32px;
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.04);
+}
+
+section h2 {
+  font-size: 1.65rem;
+
+  border-bottom: none;
+
+  margin-top: 0;
+
+  margin-bottom: 28px;
+
+  position: relative;
+
+  padding-bottom: 12px;
+}
+
+section h2::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 70px;
+  height: 4px;
+
+  background: #0f4c81;
+
+  border-radius: 999px;
+}
+
+/* ===== PUBLICATIONS ===== */
+
+.publications {
+  list-style: none;
+
+  margin-left: 0;
+
+  padding-left: 0;
+}
+
+.publications li {
+  background: #f8fafc;
+
+  border-left: 5px solid #0f4c81;
+
+  padding: 24px 28px;
+
+  border-radius: 16px;
+
+  margin-bottom: 24px;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.publications li:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.08);
+}
+
+/* ===== SCIENTIFIC PROFILES ===== */
+
+section ul li strong {
+  color: #0f172a;
+}
+
+/* ===== GALLERY ===== */
+
+.gallery-item img {
+  border-radius: 16px;
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.08);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.gallery-item img:hover {
+  transform: scale(1.02);
+
+  box-shadow:
+    0 10px 24px rgba(0,0,0,0.12);
+}
+
+/* ===== TIMELINE ===== */
+
+.timeline::before {
+  background: #0f4c81;
+}
+
+.timeline-item::before {
+  background: #0f4c81;
+}
+
+.timeline-content {
+  border-radius: 16px;
+
+  padding: 18px 22px;
+
+  box-shadow:
+    0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* ===== BADGES ===== */
+
+.badge.poster {
+  background-color: #0f4c81;
+}
+
+.badge.oral {
+  background-color: #15803d;
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+  margin-top: 80px;
+
+  background: #0f172a;
+
+  color: rgba(255,255,255,0.82);
+
+  border-top: none;
+
+  border-radius: 20px 20px 0 0;
+
+  padding: 34px 20px;
+
+  font-size: 0.95rem;
+
+  box-shadow:
+    0 -4px 18px rgba(0,0,0,0.08);
+}
+
+footer a {
+  color: #93c5fd;
+}
+
+footer a:hover {
+  color: white;
+}
+
+/* ===== LINKS ===== */
+
+a {
+  transition: color 0.2s ease;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 900px) {
+
+  body {
+    padding: 0 16px 40px;
+  }
+
+  .profile {
+    grid-template-columns: 1fr;
+
+    text-align: center;
+
+    padding: 40px 28px;
+  }
+
+  .profile-photo {
+    margin: auto;
+  }
+
+  .profile-text h1 {
+    font-size: 2.2rem;
+  }
+
+  section {
+    padding: 34px 28px;
+  }
+
+  .menu {
+    gap: 18px;
+
+    flex-wrap: wrap;
+  }
+
+}
