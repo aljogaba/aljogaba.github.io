@@ -792,3 +792,13 @@ a {
   }
 
 }
+
+/* ===== Active page ===== */
+
+.menu a.active {
+  color: white;
+}
+
+.menu a.active::after {
+  width: 100%;
+}
