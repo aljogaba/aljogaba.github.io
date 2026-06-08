@@ -817,3 +817,19 @@ a {
     color: #0f3f55;
     border-bottom-color: #0f3f55;
 }
+
+/* ===== Arreglos de algunas secciones ===== */
+.profile-list {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 1.2rem;
+}
+
+.profile-list li {
+    margin-bottom: 0.45rem;
+}
+
+.research-keywords {
+    font-size: 0.95rem;
+    color: #4b5563;
+}
