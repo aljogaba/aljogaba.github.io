@@ -1,9 +1,22 @@
 /* ========================================
-   DARK PROFESSIONAL NAVBAR - Cleaned CSS
-======================================== */
+   PERFIL PROFESIONAL
+   DARK PROFESSIONAL NAVBAR — CSS ORDENADO
+   ======================================== */
+
+/* ===== BASE ===== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   background: #f4f7fb;
   color: #1f2937;
   max-width: 1180px;
@@ -19,13 +32,13 @@ h1 {
 }
 
 h2 {
-  font-size: 1.65rem;
-  border-bottom: none;
+  position: relative;
   margin-top: 0;
   margin-bottom: 28px;
-  position: relative;
   padding-bottom: 12px;
+  border-bottom: none;
   color: #0f172a;
+  font-size: 1.65rem;
 }
 
 h2::after {
@@ -44,7 +57,8 @@ h3 {
   margin-bottom: 16px;
 }
 
-p, li {
+p,
+li {
   font-size: 1.02em;
 }
 
@@ -76,56 +90,101 @@ ul {
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  gap: 28px;
+  min-width: 0;
   background: #1f3d2f;
   padding: 18px 28px;
   margin-bottom: 55px;
   border-radius: 0 0 18px 18px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 .nav-left {
-  position: absolute;
-  left: 28px;
+  position: static;
+  left: auto;
   display: flex;
   align-items: center;
+  flex: 0 0 auto;
+  min-width: 0;
+  margin: 0;
+}
+
+/* Bandera + nombre */
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  color: #ffffff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-brand:hover {
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .nav-flag {
-  height: 34px;
   width: auto;
+  height: 34px;
+  flex: 0 0 auto;
   opacity: 0.95;
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-.nav-flag:hover {
+.site-brand:hover .nav-flag {
   transform: scale(1.04);
   opacity: 1;
 }
 
+.brand-name {
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 0.94rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.15px;
+  white-space: nowrap;
+}
+
+.brand-name-mobile {
+  display: none;
+}
+
 .menu {
   display: flex;
-  gap: 34px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  gap: 26px;
+  min-width: 0;
   list-style: none;
-  margin: 0;
+  margin: 0 0 0 auto;
   padding: 0;
 }
 
 .menu li {
   display: inline;
+  flex: 0 0 auto;
+  font-size: inherit;
 }
 
 .menu a {
-  color: rgba(255,255,255,0.88);
-  font-size: 0.96rem;
-  font-weight: 500;
-  letter-spacing: 0.2px;
-  transition: color 0.25s ease, opacity 0.25s ease;
   position: relative;
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  transition: color 0.25s ease, opacity 0.25s ease;
 }
 
 .menu a:hover {
-  color: white;
+  color: #ffffff;
+  text-decoration: none;
 }
 
 .menu a::after {
@@ -139,29 +198,28 @@ ul {
   transition: width 0.25s ease;
 }
 
-.menu a:hover::after {
+.menu a:hover::after,
+.menu a.active::after {
   width: 100%;
 }
 
 .menu a.active {
-  color: white;
+  color: #ffffff;
 }
 
-.menu a.active::after {
-  width: 100%;
-}
 
 /* ===== PROFILE SECTION ===== */
 
 .profile {
   display: grid;
-  grid-template-columns: 280px 1fr;
+  grid-template-columns: 280px minmax(0, 1fr);
   align-items: center;
   gap: 60px;
-  background: white;
+  min-width: 0;
+  background: #ffffff;
   padding: 60px;
   border-radius: 24px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   margin-bottom: 60px;
 }
 
@@ -169,24 +227,26 @@ ul {
   width: 100%;
   max-width: 280px;
   border-radius: 20px;
-  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
 }
 
 .profile-text {
+  min-width: 0;
   max-width: 100%;
 }
 
 .profile-text h1 {
+  color: #0f172a;
+  margin-bottom: 24px;
   font-size: 3rem;
   line-height: 1.08;
-  margin-bottom: 24px;
-  color: #0f172a;
+  overflow-wrap: anywhere;
 }
 
 .profile-text p:first-of-type {
-  font-size: 1.08rem;
   color: #334155;
   margin-bottom: 18px;
+  font-size: 1.08rem;
 }
 
 .profile-text p:last-of-type {
@@ -203,25 +263,33 @@ ul {
   margin-bottom: 0.45rem;
 }
 
+
 /* ===== SECTIONS ===== */
 
 section {
-  background: white;
+  min-width: 0;
+  background: #ffffff;
   padding: 42px 50px;
   border-radius: 22px;
   margin-bottom: 32px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
 }
+
 
 /* ===== LISTS ===== */
 
-.publications {
+.publications,
+.projects,
+.talks,
+.teaching {
   list-style: none;
   margin-left: 0;
   padding-left: 0;
 }
 
 .publications li {
+  min-width: 0;
+  overflow-wrap: anywhere;
   background: #f8fafc;
   border-left: 5px solid #0f4c81;
   padding: 24px 28px;
@@ -232,16 +300,12 @@ section {
 
 .publications li:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-}
-
-.projects {
-  list-style: none;
-  margin-left: 0;
-  padding-left: 0;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
 }
 
 .projects li {
+  min-width: 0;
+  overflow-wrap: anywhere;
   margin-bottom: 28px;
   padding: 20px;
   background: #f8fafc;
@@ -257,13 +321,9 @@ section {
   font-size: 1.05em;
 }
 
-.talks {
-  list-style: none;
-  margin-left: 0;
-  padding-left: 0;
-}
-
 .talks li {
+  min-width: 0;
+  overflow-wrap: anywhere;
   margin-bottom: 28px;
   padding: 16px 0;
   border-bottom: 1px solid #e5e7eb;
@@ -273,63 +333,63 @@ section {
   border-bottom: none;
 }
 
-.teaching {
-  list-style: none;
-  margin-left: 0;
-  padding-left: 0;
-}
-
 .teaching li {
+  min-width: 0;
+  overflow-wrap: anywhere;
   margin-bottom: 24px;
   padding: 20px;
   background: #f8fafc;
   border-radius: 12px;
 }
 
+
 /* ===== GALLERY ===== */
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 25px;
+  min-width: 0;
   margin-top: 25px;
 }
 
 .gallery-item {
+  min-width: 0;
   overflow: hidden;
   border-radius: 12px;
 }
 
 .gallery-item img {
+  display: block;
   width: 100%;
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  display: block;
 }
 
 .gallery-item img:hover {
   transform: scale(1.02);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
 }
 
 .gallery-item p {
   margin-top: 12px;
-  font-size: 0.9em;
   color: #64748b;
+  font-size: 0.9em;
 }
+
 
 /* ===== FOOTER ===== */
 
 footer {
   margin-top: 80px;
   background: #1f3d2f;
-  color: rgba(255,255,255,0.82);
+  color: rgba(255, 255, 255, 0.82);
   border-top: none;
   border-radius: 20px 20px 0 0;
   padding: 34px 20px;
   font-size: 0.95rem;
-  box-shadow: 0 -4px 18px rgba(0,0,0,0.08);
+  box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.08);
   text-align: center;
 }
 
@@ -340,15 +400,16 @@ footer a {
 }
 
 footer a:hover {
-  color: white;
+  color: #ffffff;
 }
+
 
 /* ===== UTILITY CLASSES ===== */
 
 .top-banner {
   width: 100%;
   height: 80px;
-  background-image: url('images/banner.png');
+  background-image: url("images/banner.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -361,6 +422,7 @@ footer a:hover {
   font-weight: 600;
   text-decoration: none;
   border-bottom: 1px solid rgba(31, 95, 122, 0.45);
+  overflow-wrap: anywhere;
   transition: color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -370,13 +432,14 @@ footer a:hover {
 }
 
 .research-keywords {
-  font-size: 0.95rem;
-  color: #4b5563;
   margin-top: 20px;
   padding: 15px;
   background: #f8fafc;
+  color: #4b5563;
   border-radius: 8px;
   border-left: 4px solid #0f4c81;
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
 }
 
 section ul li strong {
@@ -385,11 +448,13 @@ section ul li strong {
 
 a[href$=".pdf"] {
   display: inline-block;
+  max-width: 100%;
   margin-bottom: 25px;
   padding: 8px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #cccccc;
   border-radius: 5px;
   font-size: 0.9em;
+  overflow-wrap: anywhere;
   transition: background-color 0.2s ease;
 }
 
@@ -397,109 +462,59 @@ a[href$=".pdf"]:hover {
   background-color: #f5f5f5;
 }
 
-/* ===== Responsive ===== */
+
+/* ========================================
+   RESPONSIVE — HEADER INTERMEDIO
+   ======================================== */
+
+@media (max-width: 1050px) {
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px 20px 17px;
+  }
+
+  .nav-left {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .site-brand {
+    justify-content: center;
+  }
+
+  .menu {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+
+/* ========================================
+   RESPONSIVE — TABLETA
+   ======================================== */
 
 @media (max-width: 900px) {
+
   body {
     padding: 0 16px 40px;
   }
 
   .navbar {
-    flex-direction: column;
-
-    gap: 18px;
-
-    padding-top: 20px;
-  }
-
-  .nav-left {
-    position: static;
-  }
-
-  .menu {
-    flex-wrap: wrap;
-    justify-content: center;
-
-    gap: 16px;
-  }
-
-}
-
-/* ===== Active page ===== */
-
-.menu a.active {
-  color: white;
-}
-
-.menu a.active::after {
-  width: 100%;
-}
-
-
-/* ===== Esto es para la linea de enlaces (por ejemplo DiseasesMapMx) ===== */
-.inline-project-link {
-  color: #1f5f7a;
-  font-weight: 600;
-  text-decoration: none;
-  border-bottom: 1px solid rgba(31, 95, 122, 0.45);
-  transition: color 0.2s ease, border-color 0.2s ease;
-}
-
-.inline-project-link:hover {
-  color: #0f3f55;
-  border-bottom-color: #0f3f55;
-}
-
-.profile-list {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  padding-left: 1.2rem;
-}
-
-.profile-list li {
-  margin-bottom: 0.45rem;
-}
-
-.research-keywords {
-  font-size: 0.95rem;
-  color: #4b5563;
-  margin-top: 20px;
-  padding: 15px;
-  background: #f8fafc;
-  border-radius: 8px;
-  border-left: 4px solid #0f4c81;
-}
-
-/* ===== RESPONSIVE DESIGN ===== */
-
-@media (max-width: 900px) {
-  body {
-    padding: 0 16px 40px;
-  }
-
-  .navbar {
-    flex-direction: column;
-    gap: 18px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-
-  .nav-left {
-    position: static;
-    margin-bottom: 10px;
-  }
-
-  .menu {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
+    margin-bottom: 40px;
   }
 
   .profile {
     grid-template-columns: 1fr;
-    text-align: center;
-    padding: 40px 28px;
     gap: 30px;
+    padding: 40px 28px;
+    text-align: center;
   }
 
   .profile-photo {
@@ -509,6 +524,13 @@ a[href$=".pdf"]:hover {
 
   .profile-text h1 {
     font-size: 2.2rem;
+  }
+
+  .profile-list {
+    max-width: 720px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: left;
   }
 
   section {
@@ -528,39 +550,206 @@ a[href$=".pdf"]:hover {
   }
 }
 
+
+/* ========================================
+   RESPONSIVE — CELULAR
+   ======================================== */
+
 @media (max-width: 768px) {
+
   body {
     padding: 0 12px 30px;
   }
 
   .navbar {
-    padding: 12px 16px;
+    gap: 10px;
+    padding: 12px 14px 14px;
     margin-bottom: 30px;
+    border-radius: 0 0 14px 14px;
   }
 
-  .menu {
-    gap: 12px;
+  .site-brand {
+    gap: 8px;
+  }
+
+  .nav-flag {
+    height: 30px;
+  }
+
+  .brand-name {
     font-size: 0.9rem;
   }
 
-  section {
-    padding: 24px 16px;
+  .brand-name-desktop {
+    display: none;
+  }
+
+  .brand-name-mobile {
+    display: inline;
+  }
+
+  .menu {
+    gap: 5px 7px;
+  }
+
+  .menu li {
+    display: block;
+  }
+
+  .menu a {
+    display: block;
+    padding: 6px 7px;
+    font-size: 0.82rem;
+    line-height: 1.15;
+  }
+
+  .menu a::after {
+    bottom: 2px;
   }
 
   .profile {
-    padding: 30px 16px;
-    gap: 20px;
+    gap: 22px;
+    padding: 30px 18px;
+    margin-bottom: 34px;
+    border-radius: 18px;
+  }
+
+  .profile-photo {
+    max-width: 180px;
+    border-radius: 16px;
   }
 
   .profile-text h1 {
+    margin-bottom: 18px;
+    font-size: 1.8rem;
+    line-height: 1.12;
+  }
+
+  .profile-text p:first-of-type {
+    font-size: 1rem;
+  }
+
+  .profile-text {
+    text-align: left;
+  }
+
+  .profile-list {
+    padding-left: 1.1rem;
+  }
+
+  section {
+    padding: 24px 18px;
+    margin-bottom: 24px;
+    border-radius: 16px;
+  }
+
+  h1 {
     font-size: 1.8rem;
   }
 
   h2 {
+    margin-bottom: 22px;
     font-size: 1.3rem;
+    line-height: 1.25;
+  }
+
+  h2::after {
+    width: 56px;
+    height: 3px;
+  }
+
+  p,
+  li {
+    font-size: 0.98rem;
+  }
+
+  .publications li {
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 18px;
+  }
+
+  .projects li,
+  .teaching li {
+    padding: 16px;
+  }
+
+  .talks li {
+    margin-bottom: 20px;
   }
 
   .gallery {
     gap: 15px;
+  }
+
+  footer {
+    margin-top: 50px;
+    padding: 28px 16px;
+    border-radius: 16px 16px 0 0;
+  }
+}
+
+
+/* ========================================
+   RESPONSIVE — CELULARES ESTRECHOS
+   ======================================== */
+
+@media (max-width: 480px) {
+
+  body {
+    padding: 0 8px 24px;
+  }
+
+  .navbar {
+    padding: 11px 8px 12px;
+    margin-bottom: 24px;
+  }
+
+  .nav-flag {
+    height: 27px;
+  }
+
+  .brand-name {
+    font-size: 0.84rem;
+  }
+
+  .menu {
+    gap: 3px 4px;
+  }
+
+  .menu a {
+    padding: 5px 6px;
+    font-size: 0.75rem;
+  }
+
+  .profile {
+    padding: 24px 14px;
+  }
+
+  .profile-photo {
+    max-width: 155px;
+  }
+
+  .profile-text h1 {
+    font-size: 1.62rem;
+  }
+
+  section {
+    padding: 21px 14px;
+  }
+
+  h2 {
+    font-size: 1.22rem;
+  }
+
+  .publications li,
+  .projects li,
+  .teaching li {
+    padding: 14px;
+  }
+
+  footer {
+    padding-right: 12px;
+    padding-left: 12px;
   }
 }
