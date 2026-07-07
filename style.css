@@ -904,3 +904,131 @@ a[href$=".pdf"]:hover {
     border-radius: 14px;
   }
 }
+
+/* ========================================
+   v0.2 — Ajuste fino de navegación e idioma
+   ======================================== */
+
+.navbar {
+  display: grid;
+  grid-template-columns: minmax(230px, auto) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  padding: 16px 26px;
+}
+
+.nav-left {
+  min-width: 0;
+}
+
+.site-brand {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.nav-flag {
+  height: 30px;
+}
+
+.brand-name {
+  max-width: 230px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.menu {
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  margin-left: 0;
+  min-width: 0;
+}
+
+.menu a {
+  font-size: 0.9rem;
+}
+
+.language-switch {
+  gap: 8px;
+  margin-left: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.lang-btn {
+  min-width: auto;
+  padding: 0 0 3px;
+  border-radius: 0;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.82);
+  background: transparent;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.lang-btn:hover {
+  background: transparent;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.lang-btn.active {
+  color: #ffffff;
+  background: transparent;
+  border-bottom: 2px solid #ffffff;
+}
+
+.lang-separator {
+  color: rgba(255, 255, 255, 0.42);
+  font-weight: 700;
+}
+
+.lang-flag-img {
+  width: 23px;
+  height: 15px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.tool-actions {
+  gap: 10px 16px;
+}
+
+@media (max-width: 1180px) {
+  .navbar {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 12px;
+  }
+
+  .brand-name {
+    max-width: none;
+  }
+
+  .menu {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 13px 14px 15px;
+  }
+
+  .language-switch {
+    width: auto;
+    max-width: none;
+    justify-content: center;
+  }
+
+  .lang-btn {
+    min-width: auto;
+    padding: 0 0 3px;
+  }
+}
