@@ -753,3 +753,154 @@ a[href$=".pdf"]:hover {
     padding-left: 12px;
   }
 }
+
+
+/* ========================================
+   LANGUAGE SWITCH + LABORATORY TOOL CARDS
+   ======================================== */
+
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  margin-left: 8px;
+  padding: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 68px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.lang-btn:hover {
+  color: #ffffff;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.lang-btn.active {
+  color: #1f3d2f;
+  background: #ffffff;
+}
+
+.tools-hero,
+.lab-highlight {
+  background: linear-gradient(135deg, #ffffff 0%, #f3faf6 100%);
+  border: 1px solid #dce8df;
+}
+
+.tools-hero h1 {
+  margin-bottom: 16px;
+}
+
+.tool-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: 22px;
+  margin-top: 18px;
+}
+
+.compact-tools {
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+}
+
+.tool-card {
+  min-width: 0;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 5px solid #1f3d2f;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+}
+
+.featured-tool {
+  border-left-color: #0f4c81;
+}
+
+.tool-card h3 {
+  margin-top: 8px;
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+}
+
+.tool-card p {
+  color: #475569;
+  margin-bottom: 14px;
+}
+
+.tool-status {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #e6f3ea;
+  color: #1f3d2f;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.tool-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+@media (max-width: 1180px) {
+  .navbar {
+    gap: 16px;
+  }
+
+  .menu {
+    gap: 18px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .language-switch {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .language-switch {
+    width: 100%;
+    justify-content: center;
+    max-width: 220px;
+  }
+
+  .lang-btn {
+    min-width: 82px;
+    padding: 7px 10px;
+  }
+
+  .tool-card {
+    padding: 18px;
+    border-radius: 14px;
+  }
+}
