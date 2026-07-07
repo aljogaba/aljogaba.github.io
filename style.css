@@ -183,7 +183,7 @@ h3 {
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
-  gap: clamp(10px, 1.05vw, 18px);
+  gap: 16px;
   min-width: 0;
   width: 100%;
   margin: 0;
@@ -200,9 +200,9 @@ h3 {
 .menu a {
   position: relative;
   display: inline-block;
-  color: rgba(255, 255, 255, 0.86);
-  font-size: clamp(0.76rem, 0.74vw, 0.88rem);
-  font-weight: 600;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 0.96rem;
+  font-weight: 700;
   line-height: 1.15;
   white-space: nowrap;
 }
@@ -600,11 +600,11 @@ footer a:hover {
   }
 
   .menu {
-    gap: clamp(7px, 0.68vw, 11px);
+    gap: clamp(8px, 0.72vw, 12px);
   }
 
   .menu a {
-    font-size: clamp(0.70rem, 0.66vw, 0.78rem);
+    font-size: clamp(0.74rem, 0.70vw, 0.82rem);
   }
 }
 
