@@ -123,7 +123,7 @@ h3 {
   top: 0;
   z-index: 1000;
   display: grid;
-  grid-template-columns: minmax(210px, 245px) minmax(0, 1fr) auto;
+  grid-template-columns: minmax(260px, 300px) minmax(0, 1fr) auto;
   align-items: center;
   gap: 14px;
   min-height: 72px;
@@ -162,15 +162,16 @@ h3 {
 }
 
 .brand-name {
-  max-width: 190px;
-  overflow: hidden;
   color: rgba(255, 255, 255, 0.94);
   font-size: 0.9rem;
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: 0.08px;
-  text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.brand-name-desktop {
+  display: inline;
 }
 
 .brand-name-mobile {
@@ -182,7 +183,7 @@ h3 {
   align-items: center;
   justify-content: center;
   flex-wrap: nowrap;
-  gap: clamp(10px, 1.15vw, 18px);
+  gap: clamp(10px, 1.05vw, 18px);
   min-width: 0;
   width: 100%;
   margin: 0;
@@ -200,7 +201,7 @@ h3 {
   position: relative;
   display: inline-block;
   color: rgba(255, 255, 255, 0.86);
-  font-size: clamp(0.78rem, 0.78vw, 0.88rem);
+  font-size: clamp(0.76rem, 0.74vw, 0.88rem);
   font-weight: 600;
   line-height: 1.15;
   white-space: nowrap;
@@ -580,28 +581,30 @@ footer a:hover {
 
 @media (max-width: 1320px) and (min-width: 1081px) {
   .navbar {
-    grid-template-columns: minmax(150px, 166px) minmax(0, 1fr) 86px;
+    grid-template-columns: minmax(250px, 285px) minmax(0, 1fr) 86px;
     gap: 10px;
     padding-left: 20px;
     padding-right: 20px;
   }
 
   .brand-name-desktop {
-    display: none;
+    display: inline;
   }
 
   .brand-name-mobile {
-    display: inline-block;
-    max-width: 118px;
-    font-size: 0.86rem;
+    display: none;
+  }
+
+  .brand-name {
+    font-size: 0.84rem;
   }
 
   .menu {
-    gap: clamp(8px, 0.82vw, 13px);
+    gap: clamp(7px, 0.68vw, 11px);
   }
 
   .menu a {
-    font-size: clamp(0.74rem, 0.72vw, 0.82rem);
+    font-size: clamp(0.70rem, 0.66vw, 0.78rem);
   }
 }
 
