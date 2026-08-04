@@ -1,18 +1,12 @@
-# Personal Academic Website
+# Perfil profesional V2
 
-This repository hosts the academic website of:
+Sitio estático bilingüe. El contenido esencial está en HTML; JavaScript solo mejora menús, filtros y colecciones.
 
-Alberto Jorge Galindo Barboza
+## Revisión local
+Abra la carpeta en VS Code y ejecute `index-es.html` con Live Server.
 
-Researcher at INIFAP.
+## Agregar un perfil
+En `index-es.html` y `index.html`, busque `profile-directory`, duplique una tarjeta `profile-platform` y cambie imagen, nombre, descripción y enlace. Los iconos están en `assets/images/profiles/`.
 
-Research areas:
-
-- PRRSV molecular epidemiology
-- PCV2 genetic characterization
-- Swine production systems
-
-
-## Versión bilingüe y Laboratorio de Sistemas Porcícolas
-
-Esta versión agrega páginas en español, selector de idioma con banderas, página de herramientas y enlaces al Laboratorio de Sistemas Porcícolas / Swine Systems Laboratory.
+## Colecciones
+Publicaciones, ponencias, proyectos, docencia y campo se administran en `assets/js/content-data.js`; cada página conserva una salida HTML básica si JavaScript no carga.
