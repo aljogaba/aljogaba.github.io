@@ -1,12 +1,10 @@
 window.SITE_CONTENT = {
-  
-  
-    // ==========================================================
-    // PUBLICACIONES
-    // Agregar las publicaciones nuevas al principio
-    // ==========================================================
-  
-    publications: [
+  // ==========================================================
+  // PUBLICACIONES
+  // Agregar las publicaciones nuevas al principio
+  // ==========================================================
+
+  publications: [
     {
       category: "journal",
       year: 2026,
@@ -62,13 +60,36 @@ window.SITE_CONTENT = {
       es: '<b>Galindo-Barboza, A. J.</b>\n<strong>(2022). Aplicación de prácticas de bioseguridad en granjas de Jalisco.</strong>\nIn <em>La producción porcícola en Jalisco y su situación ante las enfermedades virales endémicas</em> (1ra ed., pp. 51–63).\nPrometeo Editores - Unión Regional de Porcicultores de Jalisco.\n<a href="https://urpj.org.mx/wp-content/uploads/2022/05/La-produccion-porcicola-en-Jalisco-y-su-situacion-ante-las-enfermedades-virales-endemicas_compressed-1.pdf" rel="noopener noreferrer" target="_blank">PDF</a>',
     },
   ],
-  
-    // ==========================================================
-    // PONENCIAS Y CONGRESOS
-    // ==========================================================  
-  
-  
+
+  // ==========================================================
+  // PONENCIAS Y CONGRESOS
+  // ==========================================================
+
   talks: [
+    {
+      category: "conference",
+      year: 2026,
+      en: '<strong>2026</strong><br/>\n<strong>Dinámica de anticuerpos contra el virus del PRRS en sistemas de producción porcina de Jalisco mediante un ELISA basado en la proteína N.</strong><br/>\n <strong>A.J. Galindo-Barboza</strong>, J.F. Rivera-Benítez, J. De La Luz-Armendáriz, J. Hernández, S.G. Sauceda-Cerecer, J.E. Campos-De Alba and H. Del Toro.<br/>\n<em>LVIII Congreso Nacional AMVEC.</em> Published in the proceedings. Pp. 23. Aguascalientes, Aguascalientes, Mexico. (Abstract)<br/>\n<a href="https://www.amvec.com/event/lviii-congreso-nacional-amvec-aguascalientes-2026-1/register" target="_blank">View event</a><br/>\n<a href="archives/2026-prrs_elisa-amvec-abstract-es.pdf" target="_blank">⬇️ Abstract PDF</a>',
+      es: '<strong>2026</strong><br/>\n<strong>Dinámica de anticuerpos contra el virus del PRRS en sistemas de producción porcina de Jalisco mediante un ELISA basado en la proteína N.</strong><br/>\n <strong>A.J. Galindo-Barboza</strong>, J.F. Rivera-Benítez, J. De La Luz-Armendáriz, J. Hernández, S.G. Sauceda-Cerecer, J.E. Campos-De Alba and H. Del Toro.<br/>\n<em>LVIII Congreso Nacional AMVEC.</em> Memorias. Pp. 23. Aguascalientes, Aguascalientes, México. (Resumen)<br/>\n<a href="https://www.amvec.com/event/lviii-congreso-nacional-amvec-aguascalientes-2026-1/register" target="_blank">Ver evento</a><br/>\n<a href="archives/2026-prrs_elisa-amvec-abstract-es.pdf" target="_blank">⬇️ Resumen PDF</a>',
+    },
+    {
+      category: "conference",
+      year: 2026,
+      en: '<strong>2026</strong><br/>\n<strong>Evaluación de la PCR Digítal (dPCR) para PRRSV como herramienta de validación de resultados sospechosos obtenidos por RT-qPCR</strong><br/>\n <strong>A.J. Galindo-Barboza</strong>, J.F. Rivera-Benítez, J. De La Luz-Armendáriz and S.G. Sauceda-Cerecer.<br/>\n<em>LVIII Congreso Nacional AMVEC.</em> Published in the proceedings. Pp. 66. Aguascalientes, Aguascalientes, Mexico. (Abstract)<br/>\n<a href="https://www.amvec.com/event/lviii-congreso-nacional-amvec-aguascalientes-2026-1/register" target="_blank">View event</a><br/>\n<a href="archives/2026-prrs_pcr_digital-amvec-abstract-es.pdf" target="_blank">⬇️ Abstract PDF</a>',
+      es: '<strong>2026</strong><br/>\n<strong>Evaluación de la PCR Digítal (dPCR) para PRRSV como herramienta de validación de resultados sospechosos obtenidos por RT-qPCR</strong><br/>\n <strong>A.J. Galindo-Barboza</strong>, J.F. Rivera-Benítez, J. De La Luz-Armendáriz y S.G. Sauceda-Cerecer.<br/>\n<em>LVIII Congreso Nacional AMVEC.</em> Memorias. Pp. 66. Aguascalientes, Aguascalientes, México. (Resumen)<br/>\n<a href="https://www.amvec.com/event/lviii-congreso-nacional-amvec-aguascalientes-2026-1/register" target="_blank">Ver evento</a><br/>\n<a href="archives/2026-prrs_pcr_digital-amvec-abstract-es.pdf" target="_blank">⬇️ Resumen PDF</a>',
+    },
+    {
+      category: "conference",
+      year: 2026,
+      en: '<strong>2026</strong><br/>\n<strong>Seroprevalencia del virus de la Diarrea Epidémica Porcina en el estado de Jalisco</strong><br/>\n L. Vivero-Carranza, J.F. Rivera-Benítez, J. De La Luz-Armendáriz and <strong>A.J. Galindo-Barboza</strong>.<br/>\n<em>LVIII Congreso Nacional AMVEC.</em> Published in the proceedings. Pp. 135. Aguascalientes, Aguascalientes, Mexico. (Abstract)<br/>\n<a href="https://www.amvec.com/event/lviii-congreso-nacional-amvec-aguascalientes-2026-1/register" target="_blank">View event</a><br/>\n<a href="archives/2026-diarrea_seroprevalencia-amvec-abstract-es.pdf" target="_blank">⬇️ Abstract PDF</a>',
+      es: '<strong>2026</strong><br/>\n<strong>Seroprevalencia del virus de la Diarrea Epidémica Porcina en el estado de Jalisco</strong><br/>\n L. Vivero-Carranza, J.F. Rivera-Benítez, J. De La Luz-Armendáriz y <strong>A.J. Galindo-Barboza</strong>.<br/>\n<em>LVIII Congreso Nacional AMVEC.</em> Memorias. Pp. 135. Aguascalientes, Aguascalientes, México. (Resumen)<br/>\n<a href="https://www.amvec.com/event/lviii-congreso-nacional-amvec-aguascalientes-2026-1/register" target="_blank">Ver evento</a><br/>\n<a href="archives/2026-diarrea_seroprevalencia-amvec-abstract-es.pdf" target="_blank">⬇️ Resumen PDF</a>',
+    },
+    {
+      category: "conference",
+      year: 2026,
+      en: '<strong>2026</strong><br/>\n<strong>Frecuencia molecular de Circovirus Porcino (PCV2, PCV3, PCV4) y PRRS en granjas de Jalisco, México.</strong><br/>\n J.F. Rivera-Benítez, J. De La Luz-Armendariz and <strong>A.J. Galindo-Barboza</strong>.<br/>\n<em>LVIII Congreso Nacional AMVEC.</em> Published in the proceedings. Pp. 33. Aguascalientes, Aguascalientes, Mexico. (Abstract)<br/>\n<a href="https://www.amvec.com/event/lviii-congreso-nacional-amvec-aguascalientes-2026-1/register" target="_blank">View event</a><br/>\n<a href="archives/2026-circovirus_frecuencia-amvec-abstract-es.pdf" target="_blank">⬇️ Abstract PDF</a>',
+      es: '<strong>2026</strong><br/>\n<strong>Frecuencia molecular de Circovirus Porcino (PCV2, PCV3, PCV4) y PRRS en granjas de Jalisco, México.</strong><br/>\n J.F. Rivera-Benítez, J. De La Luz-Armendariz y <strong>A.J. Galindo-Barboza</strong>.<br/>\n<em>LVIII Congreso Nacional AMVEC.</em> Memorias. Pp. 33. Aguascalientes, Aguascalientes, México. (Resumen)<br/>\n<a href="https://www.amvec.com/event/lviii-congreso-nacional-amvec-aguascalientes-2026-1/register" target="_blank">Ver evento</a><br/>\n<a href="archives/2026-circovirus_frecuencia-amvec-abstract-es.pdf" target="_blank">⬇️ Resumen PDF</a>',
+    },
     {
       category: "conference",
       year: 2026,
@@ -256,13 +277,11 @@ window.SITE_CONTENT = {
       es: "<strong>2023</strong><br/>\n<b>Situación actual y propuesta de proyectos para abordar el estudio de los virus de PRRS, Circovirus y Rubulavirus porcino en Jalisco.</b><br/>\n<strong>Galindo-Barboza, A.J.</strong><br/>\n<em>Seminario: Manejo de residuos y salud, puntos clave para la porcicultura en Jalisco.</em><br/>\nOrganized by Campo Experimental Centro-Altos de Jalisco, CIRPAC-INIFAP<br/>\nTepatitlán de Morelos, Jalisco, México, mayo 2023",
     },
   ],
-  
-  
-    // ==========================================================
-    // PROYECTOS EJECUTADOS
-    // ==========================================================
-  
-  
+
+  // ==========================================================
+  // PROYECTOS EJECUTADOS
+  // ==========================================================
+
   projects: [
     {
       category: "project",
@@ -295,13 +314,11 @@ window.SITE_CONTENT = {
       es: "<strong>Building the capacity of livestock practitioners in innovative on-farm production practices to mitigate the negative impact of climate change</strong> <strong>(2021)</strong><br/><br/>Rol: <strong>Responsable del proyecto</strong><br/>Institución: INIFAP<br/>Colaboración: Rural Agricultural Development Authority (RADA), Kingston<br/>Financiamiento: Secretaría de Relaciones Exteriores – AMEXCID<br/>Descripción: Integración de tecnologías innovadoras y prácticas de manejo para promover la sostenibilidad y mitigar los impactos del cambio climático en sistemas de producción pecuaria.<br/>Productos: capacitación profesional e intercambio internacional de conocimiento.",
     },
   ],
-  
-  
-    // ==========================================================
-    // ASIGNATURAS IMPARTIDAS
-    // ==========================================================
-  
-  
+
+  // ==========================================================
+  // ASIGNATURAS IMPARTIDAS
+  // ==========================================================
+
   teaching: [
     {
       category: "course",
@@ -328,13 +345,11 @@ window.SITE_CONTENT = {
       es: "<h3>📝 Seminario de Tesis</h3><strong>Objetivo:</strong> Al finalizar el curso, los estudiantes podrán definir, organizar y analizar el proceso metodológico de la investigación agropecuaria, desarrollando una propuesta de tesis con metodología científica adecuada.",
     },
   ],
-  
-  
-    // ==========================================================
-    // TRABAJO DE CAMPO
-    // ==========================================================
-  
-  
+
+  // ==========================================================
+  // TRABAJO DE CAMPO
+  // ==========================================================
+
   fieldwork: {
     en: [
       {
