@@ -32,6 +32,50 @@
   const yearNodes = document.querySelectorAll('[data-current-year]');
   yearNodes.forEach((node) => { node.textContent = String(new Date().getFullYear()); });
 
+  const toolCards = document.querySelectorAll('.tools-grid .feature-card');
+  if (toolCards.length) {
+    const registrationStyle = document.createElement('style');
+    registrationStyle.textContent = `
+      .tools-grid .status {
+        display: inline-flex;
+        align-items: center;
+        vertical-align: middle;
+      }
+      .registration-status {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        margin-left: .45rem;
+        padding: .27rem .56rem;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--paper);
+        color: var(--muted);
+        font-size: .62rem;
+        font-weight: 820;
+        letter-spacing: .055em;
+        line-height: 1.2;
+        text-transform: uppercase;
+        vertical-align: middle;
+      }
+    `;
+    document.head.append(registrationStyle);
+
+    const registrationLabel = html.lang && html.lang.toLowerCase().startsWith('es')
+      ? 'Registro en proceso'
+      : 'Registration in progress';
+
+    toolCards.forEach((card) => {
+      if (card.querySelector('.registration-status')) return;
+      const developmentStatus = card.querySelector('.status');
+      if (!developmentStatus) return;
+      const registrationStatus = document.createElement('span');
+      registrationStatus.className = 'registration-status';
+      registrationStatus.textContent = registrationLabel;
+      developmentStatus.insertAdjacentElement('afterend', registrationStatus);
+    });
+  }
+
   const revealNodes = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries, obs) => {
