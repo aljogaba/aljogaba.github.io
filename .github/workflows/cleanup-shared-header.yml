@@ -1,0 +1,79 @@
+name: Cleanup shared header
+
+on:
+  push:
+    paths:
+      - '.github/workflows/cleanup-shared-header.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Remove duplicated brand role from HTML safely
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          pattern = re.compile(r'<span\s+class="brand-role"\s*>.*?</span\s*>', re.S)
+          changed = []
+
+          for path in sorted(Path('.').glob('*.html')):
+              text = path.read_text(encoding='utf-8')
+              before_lines = len(text.splitlines())
+              cleaned, count = pattern.subn('', text)
+
+              if count > 1:
+                  raise SystemExit(f'Unexpected multiple brand-role blocks in {path}: {count}')
+
+              if count == 1:
+                  after_lines = len(cleaned.splitlines())
+                  if before_lines - after_lines > 8:
+                      raise SystemExit(f'Unsafe line loss in {path}: {before_lines - after_lines}')
+
+                  required = [
+                      'class="site-header"',
+                      'class="brand-copy"',
+                      'class="brand-name"',
+                      '<main id="main-content"',
+                      '</header>',
+                      '</html>'
+                  ]
+                  missing = [token for token in required if token not in cleaned]
+                  if missing:
+                      raise SystemExit(f'Missing required structure in {path}: {missing}')
+
+                  path.write_text(cleaned, encoding='utf-8')
+                  changed.append(str(path))
+
+          print(f'Cleaned {len(changed)} HTML files:')
+          for path in changed:
+              print(f'  {path}')
+
+          remaining = [
+              str(path) for path in sorted(Path('.').glob('*.html'))
+              if 'brand-role' in path.read_text(encoding='utf-8')
+          ]
+          if remaining:
+              raise SystemExit('brand-role still present in HTML: ' + ', '.join(remaining))
+
+      - name: Commit cleanup
+        shell: bash
+        run: |
+          if git diff --quiet -- '*.html'; then
+            echo 'No HTML cleanup needed.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- '*.html'
+          git commit -m 'Remove duplicated brand tagline from HTML safely'
+          git push
