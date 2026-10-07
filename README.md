@@ -30,6 +30,8 @@ Ese archivo es **derivado** y no debe editarse manualmente.
 
 `assets/js/content-data.js` se conserva únicamente como **fallback transitorio** para módulos todavía no migrados por completo. No debe duplicar nuevos datos que ya provienen de la fuente canónica.
 
+La colección manual de `projects` ya fue retirada de `content-data.js`; Investigación consume únicamente la colección generada en `canonical-data.js`. El HTML conserva solo un fallback mínimo de disponibilidad, no una segunda copia de los proyectos.
+
 ## Regla del encabezado compartido
 
 Los HTML contienen únicamente el nombre dentro de `.brand-copy`:
@@ -77,8 +79,8 @@ Abra la carpeta en VS Code y ejecute el sitio con Live Server.
 La revisión actual se realiza de manera quirúrgica, conservando diseño y componentes existentes:
 
 1. Inicio — revisado.
-2. Investigación — siguiente.
-3. Publicaciones.
+2. Investigación — revisado; selección y narrativa conectadas a la fuente canónica.
+3. Publicaciones — siguiente.
 4. Ponencias y contribuciones.
 5. Docencia.
 
