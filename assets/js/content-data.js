@@ -279,43 +279,10 @@ window.SITE_CONTENT = {
   ],
 
   // ==========================================================
-  // PROYECTOS EJECUTADOS
-  // ==========================================================
+  // PROYECTOS
+  // Migrados a assets/js/canonical-data.js desde la fuente canónica.
+  // No mantener una segunda copia manual en este archivo.
 
-  projects: [
-    {
-      category: "project",
-      year: 2023,
-      en: '<strong>Genetic variability of PRRS virus in swine production systems in Jalisco and its relationship with clinical presentation</strong>  \n("Caracterización de la variabilidad genética del virus de PRRS en los sistemas de producción porcícola de Jalisco y relación con la presentación clínica")  \n<strong>(2023–2024)</strong>\n<br/><br/>\n\nRole: <strong>Co-investigator</strong>\n<br/>\nInstitution: INIFAP  \n<br/>\nCollaboration: Unión Regional de Porcicultores de Jalisco (URPJ)  \n<br/>\nFunding: IPVS México Association  \n<br/>\nDescription: Molecular epidemiology study of PRRSV circulating in swine production systems in Jalisco  \n<br/>\nOutputs: scientific publication',
-      es: "<strong>Caracterización de la variabilidad genética del virus de PRRS en los sistemas de producción porcícola de Jalisco y relación con la presentación clínica</strong> <strong>(2023–2024)</strong><br/><br/>Rol: <strong>Coinvestigador</strong><br/>Institución: INIFAP<br/>Colaboración: Unión Regional de Porcicultores de Jalisco (URPJ)<br/>Financiamiento: IPVS México A.C.<br/>Descripción: Estudio de epidemiología molecular de PRRSV circulante en sistemas de producción porcina de Jalisco.<br/>Productos: publicación científica.",
-    },
-    {
-      category: "project",
-      year: 2023,
-      en: '<strong>Development of diagnostic tests and immunogens for swine influenza virus based on its epidemiology in Jalisco</strong>  \n("Desarrollo de pruebas diagnósticas e inmunógenos del virus de influenza porcina basados en su epidemiología en el Estado de Jalisco")  \n<strong>(2023–2025)</strong>\n<br/><br/>\n\nRole: <strong>Co-investigator</strong>\n<br/>\nInstitution: INIFAP  \n<br/>\nCollaboration: Unión Regional de Porcicultores de Jalisco (URPJ)  \n<br/>\nFunding: INIFAP  \n<br/>\nDescription: Development of immunogens and diagnostic tools for swine influenza virus based on epidemiological data from swine production systems in Jalisco  \n<br/>\nOutputs: conference publications',
-      es: "<strong>Desarrollo de pruebas diagnósticas e inmunógenos del virus de influenza porcina basados en su epidemiología en el estado de Jalisco</strong> <strong>(2023–2025)</strong><br/><br/>Rol: <strong>Coinvestigador</strong><br/>Institución: INIFAP<br/>Colaboración: Unión Regional de Porcicultores de Jalisco (URPJ)<br/>Financiamiento: INIFAP<br/>Descripción: Desarrollo de inmunógenos y herramientas diagnósticas para virus de influenza porcina a partir de datos epidemiológicos de sistemas de producción porcina en Jalisco.<br/>Productos: publicaciones en congresos.",
-    },
-    {
-      category: "project",
-      year: 2022,
-      en: '<strong>Technology transfer for the management and utilization of swine production residues</strong>  \n("Transferencia de tecnología para el manejo y aprovechamiento de residuos porcícolas")  \n<strong>(2022)</strong>\n<br/><br/>\n\nRole: <strong>Project Leader</strong>\n<br/>\nInstitution: INIFAP  \n<br/>\nCollaboration: Unión Regional de Porcicultores de Jalisco (URPJ)  \n<br/>\nFunding: Secretaría de Desarrollo Rural, Jalisco (SADER)  \n<br/>\nDescription: Training programs for producers focused on the management and utilization of agricultural residues with emphasis on swine production systems  \n<br/>\nOutputs: training workshops and technical courses',
-      es: "<strong>Transferencia de tecnología para el manejo y aprovechamiento de residuos porcícolas</strong> <strong>(2022)</strong><br/><br/>Rol: <strong>Responsable del proyecto</strong><br/>Institución: INIFAP<br/>Colaboración: Unión Regional de Porcicultores de Jalisco (URPJ)<br/>Financiamiento: Secretaría de Desarrollo Rural, Jalisco (SADER)<br/>Descripción: Programas de capacitación para productores enfocados en el manejo y aprovechamiento de residuos agropecuarios, con énfasis en sistemas de producción porcina.<br/>Productos: talleres de capacitación y cursos técnicos.",
-    },
-    {
-      category: "project",
-      year: 2021,
-      en: '<strong>Protocol for strengthening maize and pork production for food sovereignty in rural and indigenous communities of the Manantlán Biosphere Reserve</strong>  \n("Protocolo para el fortalecimiento en la producción de maíz y carne de cerdo para la soberanía alimentaria de las comunidades rurales e indígenas de la Reserva de Manantlán")  \n<strong>(2021)</strong>\n<br/><br/>\n\nRole: <strong>Project Leader</strong>\n<br/>\nInstitution: INIFAP  \n<br/>\nCollaboration: Unión Regional de Porcicultores de Jalisco (URPJ); Centro Universitario de la Costa Sur, Universidad de Guadalajara; Comisión Nacional de Áreas Naturales Protegidas (CONANP)  \n<br/>\nFunding: CONACYT  \n<br/>\nDescription: Multidisciplinary initiative aimed at strengthening self-sufficiency in maize and pork production in rural and indigenous communities  \n<br/>\nOutputs: project framework, strategic agenda, and outreach publications',
-      es: "<strong>Protocolo para el fortalecimiento en la producción de maíz y carne de cerdo para la soberanía alimentaria de las comunidades rurales e indígenas de la Reserva de Manantlán</strong> <strong>(2021)</strong><br/><br/>Rol: <strong>Responsable del proyecto</strong><br/>Institución: INIFAP<br/>Colaboración: Unión Regional de Porcicultores de Jalisco (URPJ); Centro Universitario de la Costa Sur, Universidad de Guadalajara; Comisión Nacional de Áreas Naturales Protegidas (CONANP)<br/>Financiamiento: CONACYT<br/>Descripción: Iniciativa multidisciplinaria orientada a fortalecer la autosuficiencia en producción de maíz y carne de cerdo en comunidades rurales e indígenas.<br/>Productos: marco de proyecto, agenda estratégica y publicaciones de divulgación.",
-    },
-    {
-      category: "project",
-      year: 2021,
-      en: "<strong>Building the capacity of livestock practitioners in innovative on-farm production practices to mitigate the negative impact of climate change</strong>\n<strong>(2021)</strong>\n<br/><br/>\n\nRole: <strong>Project Leader</strong>\n<br/>\nInstitution: INIFAP  \n<br/>\nCollaboration: Rural Agricultural Development Authority (RADA), Kingston  \n<br/>\nFunding: Secretaría de Relaciones Exteriores – AMEXCID  \n<br/>\nDescription: Integration of innovative technologies and management practices to promote sustainability and mitigate the impacts of climate change in livestock production systems  \n<br/>\nOutputs: professional training and international knowledge exchange",
-      es: "<strong>Building the capacity of livestock practitioners in innovative on-farm production practices to mitigate the negative impact of climate change</strong> <strong>(2021)</strong><br/><br/>Rol: <strong>Responsable del proyecto</strong><br/>Institución: INIFAP<br/>Colaboración: Rural Agricultural Development Authority (RADA), Kingston<br/>Financiamiento: Secretaría de Relaciones Exteriores – AMEXCID<br/>Descripción: Integración de tecnologías innovadoras y prácticas de manejo para promover la sostenibilidad y mitigar los impactos del cambio climático en sistemas de producción pecuaria.<br/>Productos: capacitación profesional e intercambio internacional de conocimiento.",
-    },
-  ],
-
-  // ==========================================================
   // ASIGNATURAS IMPARTIDAS
   // ==========================================================
 
