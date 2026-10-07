@@ -1,37 +1,29 @@
-# Arquitectura para perfil profesional dinámico
+# Arquitectura del perfil profesional dinámico
 
 **Alberto Jorge Galindo Barboza**  
-Última revisión: **2026-10-05**
+Última revisión: **2026-10-07**
 
 ## Objetivo
 
-Reducir al mínimo la captura duplicada y convertir el sitio `aljogaba.github.io` en una capa de publicación que consuma información profesional estructurada desde una fuente maestra.
+Mantener `aljogaba.github.io` como una capa pública de presentación, evitando duplicar datos profesionales y evitando que el HTML se convierta en una segunda fuente curricular.
 
-La regla central será:
+La regla general es:
 
-> **Capturar una vez; reutilizar en CV, sitio web, conteos y semblanzas.**
+> **Capturar una vez; reutilizar en CV, sitio web y otras salidas.**
 
-El sitio público no debe convertirse en la fuente maestra ni requerir captura manual de proyectos, publicaciones o ponencias.
+El repositorio público presenta información. La fuente factual principal vive en el repositorio privado `aljogaba/perfil-profesional-source`.
 
-## Arquitectura propuesta
+---
 
-Se propone crear un repositorio maestro separado, preferentemente privado, para la información profesional estructurada. Nombre de trabajo: `perfil-profesional-source`.
+## Arquitectura actual
 
-Ese repositorio contendrá:
+### 1. Fuente canónica privada
 
-- datos curriculares estructurados;
-- bibliografía científica normalizada;
-- narrativa editorial;
-- reglas de conteo;
-- scripts de validación y transformación;
-- plantilla(s) Quarto para generar CV;
-- exportaciones destinadas al sitio público.
+Repositorio:
 
-`aljogaba.github.io` permanecerá como la capa pública de presentación.
+`aljogaba/perfil-profesional-source`
 
-## Fuentes y salidas
-
-### Fuente factual estructurada
+Fuentes principales:
 
 - `data/persona.yml`
 - `data/formacion.yml`
@@ -39,240 +31,282 @@ Ese repositorio contendrá:
 - `data/proyectos.yml`
 - `data/ponencias.yml`
 - `data/docencia.yml`
-- `data/cursos.yml`
+- `data/actividades.yml`
 - `data/software.yml`
-- otras colecciones cuando sean necesarias.
+- `references/publicaciones.bib`
+- `data/publicaciones_meta.yml`
+- `web/selection.yml`
+- `web/EDITORIAL_ARCHITECTURE.md`
 
-### Publicaciones científicas
+Las publicaciones bibliográficas se mantienen en Zotero/Better BibTeX y se complementan con metadatos editoriales locales.
 
-Las publicaciones arbitradas, capítulos y otros productos bibliográficos deberán provenir preferentemente de Zotero/Better BibTeX mediante un archivo `.bib` normalizado.
+### 2. Generación para la web
 
-La bibliografía será transformada a los formatos requeridos para:
+El generador actual es:
 
-- CV;
-- página de Publicaciones;
-- conteos;
-- semblanzas cuando corresponda.
+`R/export_web_content.R`
 
-El DOI y otros identificadores se almacenarán como datos estructurados y el sitio generará los enlaces correspondientes.
+Comando de sincronización:
 
-### Narrativa editorial
+```r
+source("R/export_web_content.R")
+sync_web_content()
+```
 
-La narrativa profesional se mantendrá separada de los datos factuales. Incluirá:
+La salida pública derivada es:
 
-- frase rectora;
-- narrativa maestra;
-- ejes científicos;
-- capacidades metodológicas;
-- reglas de identidad;
-- criterios para semblanzas y perfiles externos.
+`assets/js/canonical-data.js`
 
-La fuente editorial actual es `docs/perfil-profesional.md`; cuando exista el repositorio maestro, esta documentación deberá migrarse o sincronizarse desde ahí.
+Ese archivo **no se edita manualmente**. Se regenera desde la fuente canónica.
 
-## Relación con las páginas actuales
+### 3. Renderizado público
 
-### Investigación / `portfolio-es.html`
+`assets/js/site.js`:
 
-**Objetivo:** dejar de capturar proyectos manualmente en `assets/js/content-data.js`.
+- carga `canonical-data.js`;
+- reemplaza o renderiza las colecciones dinámicas;
+- mantiene filtros y comportamiento de interfaz;
+- actualiza herramientas desde los datos canónicos;
+- crea elementos compartidos de interfaz que no deben repetirse en cada HTML.
 
-Los proyectos se definirán una sola vez en la fuente maestra y se exportarán al formato consumido por el sitio.
+`assets/js/content-data.js` permanece temporalmente como **fallback de transición** para módulos todavía no migrados por completo. No debe recibir nuevos datos canónicos si estos ya existen en `canonical-data.js`.
 
-Campos mínimos sugeridos:
+---
 
-- `id`
-- `year_start`
-- `year_end`
-- `title_es`
-- `title_en`
-- `role`
-- `institution`
-- `collaborators`
-- `funding`
-- `description_es`
-- `description_en`
-- `outputs`
-- `status`
-- `tags`
+## Encabezado compartido
 
-### Publicaciones / `publications-es.html`
+La marca superior consta de:
 
-**Objetivo:** generar automáticamente el registro de artículos y capítulos desde la fuente bibliográfica.
+- nombre: `Alberto Jorge Galindo-Barboza`;
+- descriptor profesional bilingüe.
 
-El sitio conservará:
+### Nombre
 
-- filtros por tipo;
-- enlace DOI;
-- orden cronológico;
-- versión ES/EN de la interfaz.
+El nombre permanece en cada HTML como elemento estructural:
 
-No se capturarán manualmente las referencias bibliográficas en el HTML ni en `content-data.js` una vez completada la migración.
+```html
+<span class="brand-copy">
+  <span class="brand-name">Alberto Jorge Galindo-Barboza</span>
+</span>
+```
 
-### GenBank
+### Descriptor profesional
 
-Las búsquedas actuales por autor para PRRSV y PCV2 son útiles porque consultan NCBI dinámicamente y pueden conservarse.
+El descriptor **no debe escribirse dentro de los HTML**.
 
-Sin embargo, los textos actuales que indican cantidades de secuencias son valores estáticos y pueden quedar desactualizados aunque la búsqueda de GenBank sí encuentre registros nuevos.
+Su única fuente pública actual es `assets/js/site.js`, que crea dinámicamente `.brand-role` según el atributo `lang` del documento:
 
-Opciones futuras:
+- ES: `Epidemiología aplicada a salud y producción porcina`
+- EN: `Applied epidemiology in swine health and production`
 
-1. eliminar del sitio el número fijo y mostrar únicamente la colección consultable; o
-2. calcular el número de registros mediante NCBI durante el proceso de construcción/publicación.
+Regla de mantenimiento:
 
-No es necesario convertir GenBank en una base paralela dentro del CV.
+> Si cambia el descriptor profesional global, se modifica una sola vez en `site.js`; nunca se añade una copia en `index`, `portfolio`, `publications`, `talks`, `teaching`, `fieldwork`, `tools`, `404` o `episuis`.
 
-### Ponencias / `talks-es.html`
+Esto evita que el HTML conserve texto antiguo que ya no controla lo que se muestra en pantalla.
 
-**Objetivo:** alimentar automáticamente tanto las contribuciones en congresos como las ponencias invitadas desde la misma fuente maestra.
+---
 
-Cada registro deberá poder conservar, cuando aplique:
+## Política de limpieza de código
 
-- `id`
-- `year`
-- `category`: `conference` o `invited`
-- `title`
-- `authors`
-- `event`
-- `organizer`
-- `city`
-- `country`
-- `presentation_type`: oral, poster, abstract, invited, etc.
-- `proceedings`
-- `pages`
-- `event_url`
-- `abstract_pdf`
-- `language`
-- `status`
-- `tags`
+Cuando una responsabilidad se centraliza o se mueve a una fuente canónica:
 
-Los campos `event_url` y `abstract_pdf` generarán automáticamente los enlaces actuales **Ver evento** y **Resumen PDF**.
+1. eliminar la versión antigua del HTML o JavaScript anterior cuando deje de ser funcional;
+2. no conservar bloques muertos «por si acaso»;
+3. documentar cuál archivo controla el comportamiento vigente;
+4. mantener fallback únicamente cuando siga cumpliendo una función explícita;
+5. no editar manualmente archivos derivados.
 
-Los PDFs públicos podrán mantenerse en `archives/`; la fuente maestra almacenará la ruta o identificador del archivo.
+En particular:
 
-#### Requisito de interfaz pendiente
+- `canonical-data.js` = derivado;
+- `content-data.js` = fallback temporal mientras haya módulos pendientes;
+- `site.js` = comportamiento compartido del sitio;
+- HTML = estructura, contenido editorial propio de cada página y fallback visible cuando corresponda.
 
-Agregar a `talks-es.html` y `talks.html` un menú lateral equivalente al ya utilizado en Publicaciones.
+---
 
-En español:
+## Función editorial de cada página
 
-- **Secciones**
-  - Contribuciones en congresos
-  - Ponencias invitadas
+| Página | Función |
+|---|---|
+| `index / index-es` | Quién es Alberto Galindo y cuál es su enfoque profesional actual. No debe convertirse en catálogo de publicaciones, proyectos o ponencias. |
+| `portfolio / portfolio-es` | Investigación y proyectos seleccionados. Introducción editorial breve + proyectos provenientes de la fuente canónica. |
+| `publications / publications-es` | Producción científica y bibliográfica seleccionada, con enlaces DOI/HTML cuando existan. |
+| `talks / talks-es` | Ponencias invitadas y magistrales + contribuciones en congresos, con recursos de acceso cuando existan. |
+| `teaching / teaching-es` | Docencia seleccionada, principalmente actual. |
+| `fieldwork / fieldwork-es` | Galería editorial/manual. No automatizar desde el CV. |
+| `tools / tools-es` | Herramientas científicas activas, alimentadas desde `data/software.yml`. |
+| `index#profiles` | Perfiles académicos y profesionales. Mantener como directorio. |
+| Notas técnicas | Sitio independiente. |
+| EPISUIS | Identidad separada del perfil profesional. |
 
-En inglés:
+---
 
-- **Sections**
-  - Conference contributions
-  - Invited talks
+## Investigación / `portfolio`
 
-La estructura deberá usar los mismos patrones `content-layout` y `section-nav` ya presentes en Publicaciones para mantener consistencia visual y no crear un componente nuevo innecesario.
+La página de Investigación no debe funcionar como un CV completo.
 
-### Docencia
+Debe contener:
 
-Puede mantenerse con edición relativamente manual o migrarse posteriormente a datos estructurados.
+- una introducción breve al enfoque actual;
+- los ejes necesarios para contextualizar la selección;
+- proyectos elegidos editorialmente desde `data/proyectos.yml` y `web/selection.yml`.
 
-No es prioridad automatizarla porque el número de asignaturas es pequeño y la edición tiene un componente descriptivo importante.
+No debe repetir publicaciones, ponencias, herramientas, docencia ni la galería de campo.
 
-### Campo
+---
 
-Mantener manual/editorial. El propietario decide qué actividades e imágenes mostrar. No debe generarse automáticamente desde el CV.
+## Publicaciones / `publications`
 
-### Herramientas
+Las referencias se generan desde:
 
-Mantener manual/editorial. Cada herramienta tiene identidad y descripción propias y no debe inferirse automáticamente del CV.
+- `references/publicaciones.bib`;
+- `data/publicaciones_meta.yml`.
 
-## Capa de exportación para el sitio
+Política de acceso:
 
-El sitio actual ya dispone de un renderizador de colecciones basado en `window.SITE_CONTENT`.
+- cuando existe DOI o página HTML editorial, enlazar al recurso oficial;
+- no duplicar un PDF local si el artículo ya está accesible adecuadamente mediante DOI/editor;
+- los archivos locales se reservan para productos donde aportan acceso real y legítimo al contenido.
 
-Por ello, durante la primera migración no es necesario reescribir la presentación de las páginas. Se recomienda generar automáticamente un archivo compatible con la estructura esperada por `site.js`, por ejemplo:
+La página pública es una selección editorial; la fuente bibliográfica completa permanece en el repositorio canónico y en el CV derivado.
 
-- `assets/js/content-data.generated.js`, o
-- datos JSON estructurados cargados por una versión posterior del renderizador.
+---
 
-Primera etapa recomendada: mantener el contrato actual de `SITE_CONTENT` y cambiar únicamente quién genera el archivo.
+## Ponencias y contribuciones / `talks`
 
-Esto reduce riesgo y permite migración incremental.
+Esta página debe distinguir dos clases de objetos.
 
-## Flujo de trabajo objetivo
+### Ponencias invitadas y magistrales
 
-1. Registrar el nuevo elemento una sola vez en la fuente correspondiente.
-2. Validar estructura, campos obligatorios y duplicados.
-3. Recalcular indicadores curriculares.
-4. Generar CV y otras exportaciones requeridas.
-5. Generar la salida pública para `aljogaba.github.io`.
-6. Actualizar automáticamente las colecciones del sitio.
-7. Publicar los cambios mediante un flujo reproducible.
+Fuente principal:
 
-## Automatización recomendada
+`data/ponencias.yml`
 
-### Primera fase
+Incluye conferencias invitadas, magistrales, paneles y otras participaciones donde el hecho curricular principal es la intervención.
 
-- scripts en R;
-- Quarto para CV;
-- YAML/BibTeX como fuentes;
-- generación de `SITE_CONTENT` compatible con el sitio actual;
-- ejecución local con un único comando.
+### Contribuciones en congresos
 
-### Segunda fase
+Fuente principal:
 
-GitHub Actions en el repositorio maestro para:
+`references/publicaciones.bib` + `data/publicaciones_meta.yml`
 
-- validar datos;
-- generar CV público y otras salidas;
-- regenerar los datos del sitio;
-- proponer o publicar los cambios en `aljogaba.github.io`.
+Corresponde a resúmenes, trabajos en memorias y otras contribuciones publicadas en congresos, independientemente de si la presentación fue oral o cartel.
 
-Se recomienda inicialmente abrir una actualización revisable antes de publicar automáticamente en `main`, hasta comprobar la estabilidad del flujo.
+### Recursos web asociados
 
-### Tercera fase opcional
+Se definió una capa web separada para asociar, sin duplicar los datos curriculares:
 
-Construir una interfaz ligera para agregar registros sin editar YAML directamente. Solo debe realizarse después de estabilizar el modelo de datos y las reglas de validación.
+- URL oficial del evento;
+- PDF de resumen, extenso o memoria cuando exista;
+- otros recursos públicos relevantes.
 
-## Conteos
+Nombre previsto de la capa:
 
-Los conteos profesionales no se escribirán manualmente una vez migrados los registros.
+`web/resources.yml`
 
-Deberán calcularse a partir de las fuentes estructuradas, con categorías explícitas. Ejemplos:
+Los PDFs públicos pueden mantenerse en:
 
-- artículos científicos;
-- capítulos de libro;
-- contribuciones en congresos;
-- ponencias invitadas;
-- presentaciones orales;
-- carteles;
-- proyectos como responsable/corresponsable/participante;
-- cursos impartidos;
-- actividades organizadas;
-- software;
-- secuencias o colecciones cuando tenga sentido reportarlas.
+`archives/`
 
-Cada indicador deberá tener una definición estable para evitar mezclar categorías.
+La interfaz debe poder mostrar, según disponibilidad:
 
-## Principio de migración
+- **Ver evento / View event**
+- **Resumen PDF / Abstract PDF**
+- otros rótulos específicos cuando el tipo de documento lo requiera.
 
-No eliminar las colecciones actuales de `content-data.js` hasta que la salida generada reproduzca satisfactoriamente el contenido existente.
+No es necesario añadir estas rutas de archivos al CV si solo cumplen una función de acceso web.
 
-La migración debe hacerse por módulos:
+---
 
-1. publicaciones;
-2. proyectos;
-3. ponencias;
-4. indicadores;
-5. CV;
-6. integración restante.
+## Docencia / `teaching`
 
-Durante la transición, la versión actual seguirá funcionando como respaldo.
+La fuente canónica es `data/docencia.yml`.
 
-## Pendientes inmediatos
+La web debe mostrar una selección útil, principalmente la docencia actual. La fuente canónica conserva la trayectoria completa aunque no toda se publique.
 
-- [ ] Crear repositorio maestro privado.
-- [ ] Diseñar esquema de datos definitivo.
-- [ ] Migrar publicaciones a fuente bibliográfica normalizada.
-- [ ] Migrar proyectos.
-- [ ] Migrar contribuciones en congresos y ponencias invitadas.
-- [ ] Incorporar `event_url` y `abstract_pdf` como campos estructurados.
-- [ ] Agregar menú lateral a `talks-es.html` y `talks.html`.
-- [ ] Decidir si los conteos visibles de GenBank se eliminan o se calculan automáticamente.
-- [ ] Generar primer `SITE_CONTENT` automáticamente y compararlo con el actual.
-- [ ] Generar primer CV desde Quarto y compararlo con el CV maestro de Word.
-- [ ] Definir CV público canónico y retirar la publicación del CV completo con datos personales.
+---
+
+## Campo / `fieldwork`
+
+La galería es editorial y visual.
+
+No se genera automáticamente desde los registros curriculares y no debe modificarse durante las migraciones de proyectos, publicaciones, ponencias o docencia salvo instrucción expresa.
+
+---
+
+## Herramientas / `tools`
+
+Las herramientas publicables se alimentan desde `data/software.yml`.
+
+Actualmente la web consume nombre, descripción, estado, registro y URL cuando corresponda. Un cambio como la URL de DiseasesMapMx debe realizarse en el registro canónico y propagarse mediante `sync_web_content()`.
+
+No editar esas URLs manualmente en los HTML cuando ya provienen de la fuente canónica.
+
+---
+
+## Selección editorial
+
+La fuente canónica es exhaustiva; la web es curada.
+
+`web/selection.yml` define qué registros se exponen cuando la publicación no debe ser automática por el simple hecho de existir en el CV.
+
+Por tanto:
+
+> **Conservar en la fuente canónica no significa publicar en la web.**
+
+Esto permite mantener toda la trayectoria sin convertir el sitio en un CV largo en HTML.
+
+---
+
+## Bilingüismo
+
+ES y EN deben conservar equivalencia conceptual, no traducción mecánica palabra por palabra.
+
+Reglas:
+
+- conservar nombres oficiales de instituciones y eventos cuando corresponda;
+- usar inglés académico/profesional natural;
+- mantener la misma arquitectura de contenido entre idiomas;
+- cuando un registro solo existe documentalmente en un idioma, no inventar un título oficial en el otro; la interfaz puede traducirse sin alterar el título documental.
+
+---
+
+## Flujo de mantenimiento
+
+Para un nuevo registro profesional:
+
+1. incorporar el hecho en la fuente canónica correspondiente;
+2. adjuntar o registrar la evidencia necesaria;
+3. decidir si se publica en web;
+4. si existe un recurso público adicional, asociarlo en la capa web correspondiente;
+5. ejecutar validación y `sync_web_content()`;
+6. revisar la salida pública;
+7. publicar.
+
+Para una corrección:
+
+> corregir la fuente, no el HTML derivado.
+
+---
+
+## Estado de revisión editorial del sitio
+
+Orden acordado de revisión quirúrgica:
+
+1. **Inicio** — revisado y actualizado el 2026-10-07.
+2. **Investigación / portfolio** — siguiente módulo.
+3. **Publicaciones**.
+4. **Ponencias y contribuciones**.
+5. **Docencia**.
+
+`Campo`, `Herramientas`, `Perfiles`, `Notas técnicas` y `EPISUIS` no se rediseñarán dentro de esta pasada, salvo correcciones funcionales puntuales.
+
+---
+
+## Principio final
+
+El objetivo del sistema no es automatizar por automatizar. La arquitectura debe permitir que Alberto mantenga **información profesional**, mientras CV y web funcionan como salidas coherentes, limpias y reproducibles.
+
+Cuando una automatización genere duplicación, código muerto o confusión sobre cuál archivo manda, debe simplificarse.
