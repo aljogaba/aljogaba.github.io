@@ -20,6 +20,13 @@
   const content = window.SITE_CONTENT || null;
   const lang = html.lang && html.lang.toLowerCase().startsWith('es') ? 'es' : 'en';
 
+  const brandRole = document.querySelector('.brand-role');
+  if (brandRole) {
+    brandRole.textContent = lang === 'es'
+      ? 'Epidemiología aplicada a salud y producción porcina'
+      : 'Applied epidemiology in swine health and production';
+  }
+
   const setNav = (open) => {
     if (!nav || !toggle) return;
     nav.dataset.open = String(open);
