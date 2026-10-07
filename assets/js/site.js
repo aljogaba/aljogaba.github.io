@@ -1,7 +1,17 @@
-(() => {
+(async () => {
   'use strict';
 
   document.documentElement.classList.add('js');
+
+  const loadCanonicalData = () => new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = 'assets/js/canonical-data.js';
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.head.appendChild(script);
+  });
+
+  await loadCanonicalData();
 
   const html = document.documentElement;
   const body = document.body;
@@ -34,7 +44,7 @@
   const yearNodes = document.querySelectorAll('[data-current-year]');
   yearNodes.forEach((node) => { node.textContent = String(new Date().getFullYear()); });
 
-  const toolCards = document.querySelectorAll('.tools-grid [data-tool-id]');
+  const toolCards = document.querySelectorAll('.tools-grid .feature-card');
   if (toolCards.length) {
     const registrationStyle = document.createElement('style');
     registrationStyle.textContent = `
@@ -65,15 +75,16 @@
 
     const tools = Array.isArray(content?.tools) ? content.tools : [];
     const toolIndex = new Map(tools.map((item) => [item.id, item]));
+    const toolNameIndex = new Map(tools.map((item) => [item.name, item]));
     const fallbackRegistration = lang === 'es' ? 'Registro en proceso' : 'Registration in progress';
 
     toolCards.forEach((card) => {
-      const record = toolIndex.get(card.dataset.toolId);
+      const title = card.querySelector('h3');
+      const record = toolIndex.get(card.dataset.toolId) || toolNameIndex.get(title?.textContent.trim());
       const developmentStatus = card.querySelector('.status');
       let registrationStatus = card.querySelector('.registration-status');
 
       if (record) {
-        const title = card.querySelector('h3');
         const description = card.querySelector('p');
         const link = card.querySelector('.card-actions a');
         const statusLabel = lang === 'es' ? record.status_es : record.status_en;
@@ -103,8 +114,9 @@
       }
     });
 
-    document.querySelectorAll('a[data-tool-id]').forEach((link) => {
-      const record = toolIndex.get(link.dataset.toolId);
+    document.querySelectorAll('.tool-preview-shot').forEach((link) => {
+      const label = link.querySelector('span')?.textContent.trim();
+      const record = toolIndex.get(link.dataset.toolId) || toolNameIndex.get(label);
       if (record?.url) link.href = record.url;
     });
   }
