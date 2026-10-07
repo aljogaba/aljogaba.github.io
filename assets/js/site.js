@@ -22,6 +22,7 @@
 
   const brandCopy = document.querySelector('.brand-copy');
   if (brandCopy) {
+    brandCopy.querySelectorAll('.brand-role').forEach((node) => node.remove());
     const brandRole = document.createElement('span');
     brandRole.className = 'brand-role';
     brandRole.textContent = lang === 'es'
