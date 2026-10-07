@@ -7,6 +7,8 @@
   const body = document.body;
   const nav = document.querySelector('[data-primary-nav]');
   const toggle = document.querySelector('[data-nav-toggle]');
+  const content = window.SITE_CONTENT || null;
+  const lang = html.lang && html.lang.toLowerCase().startsWith('es') ? 'es' : 'en';
 
   const setNav = (open) => {
     if (!nav || !toggle) return;
@@ -32,7 +34,7 @@
   const yearNodes = document.querySelectorAll('[data-current-year]');
   yearNodes.forEach((node) => { node.textContent = String(new Date().getFullYear()); });
 
-  const toolCards = document.querySelectorAll('.tools-grid .feature-card');
+  const toolCards = document.querySelectorAll('.tools-grid [data-tool-id]');
   if (toolCards.length) {
     const registrationStyle = document.createElement('style');
     registrationStyle.textContent = `
@@ -61,18 +63,49 @@
     `;
     document.head.append(registrationStyle);
 
-    const registrationLabel = html.lang && html.lang.toLowerCase().startsWith('es')
-      ? 'Registro en proceso'
-      : 'Registration in progress';
+    const tools = Array.isArray(content?.tools) ? content.tools : [];
+    const toolIndex = new Map(tools.map((item) => [item.id, item]));
+    const fallbackRegistration = lang === 'es' ? 'Registro en proceso' : 'Registration in progress';
 
     toolCards.forEach((card) => {
-      if (card.querySelector('.registration-status')) return;
+      const record = toolIndex.get(card.dataset.toolId);
       const developmentStatus = card.querySelector('.status');
-      if (!developmentStatus) return;
-      const registrationStatus = document.createElement('span');
-      registrationStatus.className = 'registration-status';
-      registrationStatus.textContent = registrationLabel;
-      developmentStatus.insertAdjacentElement('afterend', registrationStatus);
+      let registrationStatus = card.querySelector('.registration-status');
+
+      if (record) {
+        const title = card.querySelector('h3');
+        const description = card.querySelector('p');
+        const link = card.querySelector('.card-actions a');
+        const statusLabel = lang === 'es' ? record.status_es : record.status_en;
+        const registrationLabel = lang === 'es' ? record.registration_es : record.registration_en;
+        const descriptionText = lang === 'es' ? record.description_es : record.description_en;
+
+        if (title && record.name) title.textContent = record.name;
+        if (description && descriptionText) description.textContent = descriptionText;
+        if (developmentStatus && statusLabel) developmentStatus.textContent = statusLabel;
+        if (link && record.url) link.href = record.url;
+
+        if (registrationLabel && developmentStatus) {
+          if (!registrationStatus) {
+            registrationStatus = document.createElement('span');
+            registrationStatus.className = 'registration-status';
+            developmentStatus.insertAdjacentElement('afterend', registrationStatus);
+          }
+          registrationStatus.textContent = registrationLabel;
+        } else if (registrationStatus) {
+          registrationStatus.remove();
+        }
+      } else if (developmentStatus && !registrationStatus) {
+        registrationStatus = document.createElement('span');
+        registrationStatus.className = 'registration-status';
+        registrationStatus.textContent = fallbackRegistration;
+        developmentStatus.insertAdjacentElement('afterend', registrationStatus);
+      }
+    });
+
+    document.querySelectorAll('a[data-tool-id]').forEach((link) => {
+      const record = toolIndex.get(link.dataset.toolId);
+      if (record?.url) link.href = record.url;
     });
   }
 
@@ -90,15 +123,13 @@
     revealNodes.forEach((node) => node.classList.add('is-visible'));
   }
 
-  const content = window.SITE_CONTENT;
   if (!content) return;
 
-  const lang = html.lang && html.lang.toLowerCase().startsWith('es') ? 'es' : 'en';
   const strings = lang === 'es' ? {
-    all: 'Todos', journal: 'Artículos', book: 'Capítulos', conference: 'Congresos', invited: 'Invitadas',
+    all: 'Todos', journal: 'Artículos', book: 'Capítulos', conference: 'Congresos', invited: 'Invitadas', technical: 'Técnicas',
     empty: 'No hay entradas para este filtro.', project: 'Proyecto', course: 'Curso'
   } : {
-    all: 'All', journal: 'Journal articles', book: 'Book chapters', conference: 'Conferences', invited: 'Invited',
+    all: 'All', journal: 'Journal articles', book: 'Book chapters', conference: 'Conferences', invited: 'Invited', technical: 'Technical',
     empty: 'No entries match this filter.', project: 'Project', course: 'Course'
   };
 
