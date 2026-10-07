@@ -2,55 +2,84 @@
 
 Sitio estático bilingüe del perfil académico y científico de Alberto Jorge Galindo Barboza.
 
-El contenido esencial está en HTML; JavaScript mejora menús, filtros y colecciones.
+Este repositorio es la **capa pública de presentación**. La fuente factual principal vive en el repositorio privado `aljogaba/perfil-profesional-source`.
 
-## Fuente de verdad editorial
+## Documentación principal
 
-La narrativa profesional, los ejes científicos, las capacidades metodológicas, los indicadores curriculares y las reglas para generar semblanzas se documentan en:
+Antes de modificar estructura, narrativa o comportamiento consulte:
 
-- [`docs/perfil-profesional.md`](docs/perfil-profesional.md)
+- [`docs/perfil-profesional.md`](docs/perfil-profesional.md) — identidad y narrativa profesional.
+- [`docs/arquitectura-perfil-dinamico.md`](docs/arquitectura-perfil-dinamico.md) — arquitectura vigente de datos, responsabilidades por página y reglas de mantenimiento.
 
-Ese archivo debe consultarse antes de modificar descripciones generales del sitio, perfiles académicos o semblanzas para eventos.
+## Flujo de datos actual
 
-## Arquitectura futura de datos
+La información estructurada se mantiene en `perfil-profesional-source` y se transforma mediante:
 
-La migración hacia una fuente maestra estructurada para generar CV, colecciones del sitio, conteos y semblanzas está documentada en:
+```r
+source("R/export_web_content.R")
+sync_web_content()
+```
 
-- [`docs/arquitectura-perfil-dinamico.md`](docs/arquitectura-perfil-dinamico.md)
+La salida pública generada es:
 
-El objetivo es que proyectos, publicaciones y ponencias dejen de capturarse manualmente en este repositorio y sean consumidos desde una fuente profesional estructurada.
+`assets/js/canonical-data.js`
 
-## Fuentes de información actuales
+Ese archivo es **derivado** y no debe editarse manualmente.
 
-- **Currículum vitae:** fuente factual histórica para trayectoria, formación, cargos, proyectos, productos y conteos.
-- **`assets/js/content-data.js`:** fuente operativa transitoria para publicaciones, ponencias, proyectos, docencia y trabajo de campo mostrados en la web.
-- **`docs/perfil-profesional.md`:** fuente editorial para narrativa, posicionamiento, capacidades, conteos verificados y criterios de redacción.
+`assets/js/site.js` carga los datos canónicos y controla el comportamiento compartido del sitio.
 
-El CV enlazado públicamente desde el sitio debe ser una versión depurada de datos personales innecesarios.
+`assets/js/content-data.js` se conserva únicamente como **fallback transitorio** para módulos todavía no migrados por completo. No debe duplicar nuevos datos que ya provienen de la fuente canónica.
 
-## Flujo de actualización durante la transición
+## Regla del encabezado compartido
 
-Mientras no se complete la arquitectura dinámica:
+Los HTML contienen únicamente el nombre dentro de `.brand-copy`:
 
-1. registrar la evidencia correspondiente;
-2. actualizar `assets/js/content-data.js` cuando aplique;
-3. actualizar el CV canónico y su versión pública;
-4. revisar los indicadores de `docs/perfil-profesional.md`;
-5. modificar la narrativa solo si el nuevo elemento cambia de forma sustantiva el perfil profesional;
-6. actualizar páginas, SEO e identificadores externos cuando corresponda.
+```html
+<span class="brand-copy">
+  <span class="brand-name">Alberto Jorge Galindo-Barboza</span>
+</span>
+```
 
-El flujo objetivo posterior se describe en `docs/arquitectura-perfil-dinamico.md` y sustituirá esta captura duplicada.
+El descriptor profesional se crea desde `assets/js/site.js` según el idioma:
+
+- ES: `Epidemiología aplicada a salud y producción porcina`
+- EN: `Applied epidemiology in swine health and production`
+
+**No escribir `.brand-role` dentro de los HTML.** Si cambia el descriptor global, se modifica una sola vez en `site.js`.
+
+## Responsabilidad de las páginas
+
+- `index / index-es`: identidad y enfoque profesional.
+- `portfolio / portfolio-es`: investigación y proyectos seleccionados.
+- `publications / publications-es`: producción científica y bibliográfica seleccionada.
+- `talks / talks-es`: ponencias invitadas/magistrales y contribuciones en congresos.
+- `teaching / teaching-es`: docencia seleccionada.
+- `fieldwork / fieldwork-es`: galería editorial/manual.
+- `tools / tools-es`: herramientas científicas; los datos publicables provienen de `data/software.yml`.
+- `index#profiles`: perfiles académicos y profesionales.
+
+Notas técnicas y EPISUIS mantienen identidades separadas del perfil profesional.
+
+## Política de mantenimiento
+
+- Corregir los hechos en la fuente canónica, no en los archivos derivados.
+- Eliminar código o texto antiguo cuando una responsabilidad se centraliza.
+- No conservar bloques muertos que ya no controlan la interfaz.
+- Mantener fallback únicamente cuando siga teniendo una función explícita.
+- Conservar ES y EN equivalentes en significado, con inglés académico natural y no traducción mecánica.
 
 ## Revisión local
 
-Abra la carpeta en VS Code y ejecute `index-es.html` con Live Server.
+Abra la carpeta en VS Code y ejecute el sitio con Live Server.
 
-## Agregar un perfil
+## Estado editorial
 
-En `index-es.html` y `index.html`, busque `profile-directory`, duplique una tarjeta `profile-platform` y cambie imagen, nombre, descripción y enlace. Los iconos están en `assets/images/profiles/`.
+La revisión actual se realiza de manera quirúrgica, conservando diseño y componentes existentes:
 
-## Colecciones
+1. Inicio — revisado.
+2. Investigación — siguiente.
+3. Publicaciones.
+4. Ponencias y contribuciones.
+5. Docencia.
 
-Actualmente publicaciones, ponencias, proyectos, docencia y campo se administran en `assets/js/content-data.js`; cada página conserva una salida HTML básica si JavaScript no carga.
-
-La migración futura conservará este comportamiento visual, pero las colecciones automatizables serán generadas desde la fuente maestra estructurada.
+Campo, Herramientas, Perfiles, Notas técnicas y EPISUIS no se rediseñan en esta pasada salvo correcciones funcionales puntuales.
