@@ -55,10 +55,19 @@
   const yearNodes = document.querySelectorAll('[data-current-year]');
   yearNodes.forEach((node) => { node.textContent = String(new Date().getFullYear()); });
 
-  const toolCards = document.querySelectorAll('.tools-grid .feature-card');
-  if (toolCards.length) {
+  const tools = Array.isArray(content?.tools) ? content.tools : [];
+  const toolIndex = new Map(tools.map((item) => [item.id, item]));
+  const toolsGrid = document.querySelector('[data-tools-grid]');
+
+  if (toolsGrid && tools.length) {
     const registrationStyle = document.createElement('style');
     registrationStyle.textContent = `
+      .tool-statuses {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: .45rem;
+      }
       .tools-grid .status {
         display: inline-flex;
         align-items: center;
@@ -68,7 +77,6 @@
         display: inline-flex;
         align-items: center;
         width: fit-content;
-        margin-left: .45rem;
         padding: .27rem .56rem;
         border: 1px solid var(--line);
         border-radius: 999px;
@@ -84,53 +92,88 @@
     `;
     document.head.append(registrationStyle);
 
-    const tools = Array.isArray(content?.tools) ? content.tools : [];
-    const toolIndex = new Map(tools.map((item) => [item.id, item]));
-    const toolNameIndex = new Map(tools.map((item) => [item.name, item]));
-    const fallbackRegistration = lang === 'es' ? 'Registro en proceso' : 'Registration in progress';
+    const fragment = document.createDocumentFragment();
+    tools.forEach((record) => {
+      const article = document.createElement('article');
+      const isPlatformCard = record.id === 'SOFT-2026-0002';
+      article.className = isPlatformCard
+        ? 'feature-card tool-card-platform reveal'
+        : 'feature-card reveal';
+      article.dataset.toolId = record.id || '';
 
-    toolCards.forEach((card) => {
-      const title = card.querySelector('h3');
-      const record = toolIndex.get(card.dataset.toolId) || toolNameIndex.get(title?.textContent.trim());
-      const developmentStatus = card.querySelector('.status');
-      let registrationStatus = card.querySelector('.registration-status');
+      const bodyNode = isPlatformCard ? document.createElement('div') : article;
+      const statusGroup = document.createElement('div');
+      statusGroup.className = 'tool-statuses';
 
-      if (record) {
-        const description = card.querySelector('p');
-        const link = card.querySelector('.card-actions a');
-        const statusLabel = lang === 'es' ? record.status_es : record.status_en;
-        const registrationLabel = lang === 'es' ? record.registration_es : record.registration_en;
-        const descriptionText = lang === 'es' ? record.description_es : record.description_en;
-
-        if (title && record.name) title.textContent = record.name;
-        if (description && descriptionText) description.textContent = descriptionText;
-        if (developmentStatus && statusLabel) developmentStatus.textContent = statusLabel;
-        if (link && record.url) link.href = record.url;
-
-        if (registrationLabel && developmentStatus) {
-          if (!registrationStatus) {
-            registrationStatus = document.createElement('span');
-            registrationStatus.className = 'registration-status';
-            developmentStatus.insertAdjacentElement('afterend', registrationStatus);
-          }
-          registrationStatus.textContent = registrationLabel;
-        } else if (registrationStatus) {
-          registrationStatus.remove();
-        }
-      } else if (developmentStatus && !registrationStatus) {
-        registrationStatus = document.createElement('span');
-        registrationStatus.className = 'registration-status';
-        registrationStatus.textContent = fallbackRegistration;
-        developmentStatus.insertAdjacentElement('afterend', registrationStatus);
+      const statusLabel = lang === 'es' ? record.status_es : record.status_en;
+      if (statusLabel) {
+        const status = document.createElement('span');
+        status.className = 'status';
+        status.textContent = statusLabel;
+        statusGroup.append(status);
       }
+
+      const registrationLabel = lang === 'es' ? record.registration_es : record.registration_en;
+      if (registrationLabel) {
+        const registration = document.createElement('span');
+        registration.className = 'registration-status';
+        registration.textContent = registrationLabel;
+        statusGroup.append(registration);
+      }
+
+      if (statusGroup.childElementCount) bodyNode.append(statusGroup);
+
+      const title = document.createElement('h3');
+      title.textContent = record.name || '';
+      bodyNode.append(title);
+
+      const description = document.createElement('p');
+      description.textContent = lang === 'es' ? record.description_es : record.description_en;
+      bodyNode.append(description);
+
+      if (record.url) {
+        const actions = document.createElement('div');
+        actions.className = 'card-actions';
+        const link = document.createElement('a');
+        link.className = 'button button-dark';
+        link.href = record.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.textContent = isPlatformCard
+          ? (lang === 'es' ? 'Abrir plataforma ↗' : 'Open platform ↗')
+          : (lang === 'es' ? 'Abrir herramienta ↗' : 'Open tool ↗');
+        actions.append(link);
+        bodyNode.append(actions);
+      }
+
+      if (isPlatformCard) {
+        article.append(bodyNode);
+        const visual = document.createElement('div');
+        visual.className = 'tool-card-visual';
+        visual.setAttribute('aria-hidden', 'true');
+        const image = document.createElement('img');
+        image.src = 'assets/images/tools-preview/diseasesmap-map.webp';
+        image.alt = '';
+        visual.append(image);
+        article.append(visual);
+      }
+
+      fragment.append(article);
     });
 
-    document.querySelectorAll('.tool-preview-shot').forEach((link) => {
-      const label = link.querySelector('span')?.textContent.trim();
-      const record = toolIndex.get(link.dataset.toolId) || toolNameIndex.get(label);
-      if (record?.url) link.href = record.url;
-    });
+    toolsGrid.replaceChildren(fragment);
   }
+
+  document.querySelectorAll('.tool-preview-shot[data-tool-id]').forEach((link) => {
+    const record = toolIndex.get(link.dataset.toolId);
+    if (!record?.url) {
+      link.removeAttribute('href');
+      return;
+    }
+    link.href = record.url;
+    const canonicalLabel = link.querySelector('[data-canonical-label]');
+    if (canonicalLabel && record.name) canonicalLabel.textContent = record.name;
+  });
 
   const revealNodes = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
