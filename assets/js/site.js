@@ -19,6 +19,34 @@
   const toggle = document.querySelector('[data-nav-toggle]');
   const content = window.SITE_CONTENT || null;
   const lang = html.lang && html.lang.toLowerCase().startsWith('es') ? 'es' : 'en';
+  const profiles = Array.isArray(window.PROFILE_DATA) ? window.PROFILE_DATA : [];
+  const profileIndex = new Map(profiles.map((item) => [item.id, item]));
+
+  document.querySelectorAll('[data-profile-id]').forEach((link) => {
+    const record = profileIndex.get(link.dataset.profileId);
+    if (!record?.url) {
+      link.removeAttribute('href');
+      link.setAttribute('aria-disabled', 'true');
+      return;
+    }
+    link.href = record.url;
+    link.removeAttribute('aria-disabled');
+  });
+
+  const personSchema = document.querySelector('script[type="application/ld+json"][data-person-schema]');
+  if (personSchema && profiles.length) {
+    try {
+      const schema = JSON.parse(personSchema.textContent || '{}');
+      const graph = Array.isArray(schema['@graph']) ? schema['@graph'] : [];
+      const person = graph.find((node) => node && node['@type'] === 'Person');
+      if (person) {
+        person.sameAs = profiles.map((record) => record.url).filter(Boolean);
+        personSchema.textContent = JSON.stringify(schema, null, 2);
+      }
+    } catch (error) {
+      console.error('Could not update profile structured data:', error);
+    }
+  }
 
   const brandCopy = document.querySelector('.brand-copy');
   if (brandCopy) {
