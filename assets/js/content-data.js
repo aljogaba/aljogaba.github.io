@@ -1,67 +1,9 @@
 window.SITE_CONTENT = {
   // ==========================================================
   // PUBLICACIONES
-  // Agregar las publicaciones nuevas al principio
-  // ==========================================================
+  // Migradas a assets/js/canonical-data.js desde la fuente canónica.
+  // No mantener una segunda copia manual en este archivo.
 
-  publications: [
-    {
-      category: "journal",
-      year: 2026,
-      en: '<b>Galindo-Barboza, A. J.</b>, Rivera-Benítez, J. F., De la Luz-Armendáriz, J., Sánchez-Betancourt, J. I., Hernández, J., Burgara-Estrella, A. J., Sauceda-Cerecer, S. G., Márquez-Valdelamar, L. &amp; De Alba-Campos, J. E.\n<strong>(2026). Molecular Variation in Porcine Circovirus Type 2 in Jalisco, Mexico, and Its Potential Impact on Vaccine Efficacy.</strong>\n<i>Vaccines, 14(7), 564.</i>\n<a href="https://www.mdpi.com/2076-393X/14/7/564" rel="noopener noreferrer" target="_blank">DOI</a>',
-      es: '<b>Galindo-Barboza, A. J.</b>, Rivera-Benítez, J. F., De la Luz-Armendáriz, J., Sánchez-Betancourt, J. I., Hernández, J., Burgara-Estrella, A. J., Sauceda-Cerecer, S. G., Márquez-Valdelamar, L. &amp; De Alba-Campos, J. E.\n<strong>(2026). Molecular Variation in Porcine Circovirus Type 2 in Jalisco, Mexico, and Its Potential Impact on Vaccine Efficacy.</strong>\n<i>Vaccines, 14(7), 564.</i>\n<a href="https://www.mdpi.com/2076-393X/14/7/564" rel="noopener noreferrer" target="_blank">DOI</a>',
-    },
-    {
-      category: "journal",
-      year: 2025,
-      en: '<b>Galindo-Barboza, A. J.</b>, Rivera-Benítez, J. F., De la Luz-Armendáriz, J., Sánchez-Betancourt, J. I., Hernández, J., Sauceda-Cerecer, S. G., &amp; De Alba-Campos, J. E.\n<strong>(2025). Identification of Risk Factors and Production Practices Associated with Type 2 Porcine Reproductive and Respiratory Syndrome Virus (PRRSV) Positivity on Pig Farms in Jalisco, Mexico.</strong>\n<i>Pathogens, 14(9), 881.</i>\n<a href="https://doi.org/10.3390/pathogens14090881" rel="noopener noreferrer" target="_blank">DOI</a>',
-      es: '<b>Galindo-Barboza, A. J.</b>, Rivera-Benítez, J. F., De la Luz-Armendáriz, J., Sánchez-Betancourt, J. I., Hernández, J., Sauceda-Cerecer, S. G., &amp; De Alba-Campos, J. E.\n<strong>(2025). Identification of Risk Factors and Production Practices Associated with Type 2 Porcine Reproductive and Respiratory Syndrome Virus (PRRSV) Positivity on Pig Farms in Jalisco, Mexico.</strong>\n<i>Pathogens, 14(9), 881.</i>\n<a href="https://doi.org/10.3390/pathogens14090881" rel="noopener noreferrer" target="_blank">DOI</a>',
-    },
-    {
-      category: "journal",
-      year: 2025,
-      en: 'De La Luz-Armendáriz, J., Alberti-Navarro, A. B., Hernández-Rojas, E. G., Ducoing-Watty, A. E., <b>Galindo-Barboza, A. J.</b>, &amp; Rivera-Benítez, J. F.\n<strong>(2025). Distribution of Small Ruminant Lentivirus Genotypes A and B in Goat and Sheep Production Units in Mexico.</strong>\n<i>Veterinary Sciences, 12(3), 204.</i>\n<a href="https://doi.org/10.3390/vetsci12030204" rel="noopener noreferrer" target="_blank">DOI</a>',
-      es: 'De La Luz-Armendáriz, J., Alberti-Navarro, A. B., Hernández-Rojas, E. G., Ducoing-Watty, A. E., <b>Galindo-Barboza, A. J.</b>, &amp; Rivera-Benítez, J. F.\n<strong>(2025). Distribution of Small Ruminant Lentivirus Genotypes A and B in Goat and Sheep Production Units in Mexico.</strong>\n<i>Veterinary Sciences, 12(3), 204.</i>\n<a href="https://doi.org/10.3390/vetsci12030204" rel="noopener noreferrer" target="_blank">DOI</a>',
-    },
-    {
-      category: "journal",
-      year: 2024,
-      en: '<b>Galindo-Barboza, A. J.</b>, Rivera-Benítez, J. F., De La Luz-Armendáriz, J., Sánchez-Betancourt, J. I., Hernández, J., Sauceda-Cerecer, S. G., &amp; De Alba-Campos, J. E.\n<strong>(2024). Molecular Positivity of Porcine Circovirus Type 2 Associated with Production Practices on Farms in Jalisco, Mexico.</strong>\n<i>Viruses, 16(10), 1633.</i>\n<a href="https://doi.org/10.3390/v16101633" rel="noopener noreferrer" target="_blank">DOI</a>',
-      es: '<b>Galindo-Barboza, A. J.</b>, Rivera-Benítez, J. F., De La Luz-Armendáriz, J., Sánchez-Betancourt, J. I., Hernández, J., Sauceda-Cerecer, S. G., &amp; De Alba-Campos, J. E.\n<strong>(2024). Molecular Positivity of Porcine Circovirus Type 2 Associated with Production Practices on Farms in Jalisco, Mexico.</strong>\n<i>Viruses, 16(10), 1633.</i>\n<a href="https://doi.org/10.3390/v16101633" rel="noopener noreferrer" target="_blank">DOI</a>',
-    },
-    {
-      category: "journal",
-      year: 2024,
-      en: 'Domínguez-Araujo, G., De La Mora-Orozco, C., <b>Galindo-Barboza, A. J.</b>, González-Acuña, I., y Salazar-Gutiérrez, G.\n<strong>(2024). Physical-chemical and nutritional parameters of liquid porcine effluent from a biodigester supplemented with a lagoon system.</strong>\n<i>Agro Productividad, 17(9 Supl), 173–181.</i>\n<a href="https://doi.org/10.32854/agrop.v17i9.3038" rel="noopener noreferrer" target="_blank">DOI</a>',
-      es: 'Domínguez-Araujo, G., De La Mora-Orozco, C., <b>Galindo-Barboza, A. J.</b>, González-Acuña, I., y Salazar-Gutiérrez, G.\n<strong>(2024). Physical-chemical and nutritional parameters of liquid porcine effluent from a biodigester supplemented with a lagoon system.</strong>\n<i>Agro Productividad, 17(9 Supl), 173–181.</i>\n<a href="https://doi.org/10.32854/agrop.v17i9.3038" rel="noopener noreferrer" target="_blank">DOI</a>',
-    },
-    {
-      category: "journal",
-      year: 2023,
-      en: 'Domínguez-Araujo, G., De La Mora-Orozco, C., González-Acuña, I., <b>Galindo-Barboza, A. J.</b>, y Arias-Castellanos, J.\n<strong>(2023). Calidad de subproductos derivados de un biodigestor alimentado con dos cargas orgánicas de residuos porcícolas.</strong>\n<i>Abanico Veterinario, 14, 1–13.</i>\n<a href="https://doi.org/10.21929/abavet2023.105" rel="noopener noreferrer" target="_blank">DOI</a>',
-      es: 'Domínguez-Araujo, G., De La Mora-Orozco, C., González-Acuña, I., <b>Galindo-Barboza, A. J.</b>, y Arias-Castellanos, J.\n<strong>(2023). Calidad de subproductos derivados de un biodigestor alimentado con dos cargas orgánicas de residuos porcícolas.</strong>\n<i>Abanico Veterinario, 14, 1–13.</i>\n<a href="https://doi.org/10.21929/abavet2023.105" rel="noopener noreferrer" target="_blank">DOI</a>',
-    },
-    {
-      category: "journal",
-      year: 2020,
-      en: '<b>Galindo-Barboza, A. J.</b>, Domínguez-Araujo, G., Arteaga-Garibay, R. I., &amp; Salazar-Gutiérrez, G.\n<strong>(2020). Mitigación y adaptación al cambio climático mediante la implementación de modelos integrados para el manejo y aprovechamiento de los residuos pecuarios. Revisión.</strong>\n<i>Revista Mexicana de Ciencias Pecuarias, 11(Supl 2), 107–125.</i>\n<a href="https://doi.org/10.22319/rmcp.v11s2.4697" rel="noopener noreferrer" target="_blank">DOI</a>',
-      es: '<b>Galindo-Barboza, A. J.</b>, Domínguez-Araujo, G., Arteaga-Garibay, R. I., &amp; Salazar-Gutiérrez, G.\n<strong>(2020). Mitigación y adaptación al cambio climático mediante la implementación de modelos integrados para el manejo y aprovechamiento de los residuos pecuarios. Revisión.</strong>\n<i>Revista Mexicana de Ciencias Pecuarias, 11(Supl 2), 107–125.</i>\n<a href="https://doi.org/10.22319/rmcp.v11s2.4697" rel="noopener noreferrer" target="_blank">DOI</a>',
-    },
-    {
-      category: "book",
-      year: 2022,
-      en: '<b>Galindo-Barboza, A. J.</b>\n<strong>(2022). Cuantificación de las principales enfermedades virales endémicas de Jalisco.</strong>\nIn <em>La producción porcícola en Jalisco y su situación ante las enfermedades virales endémicas</em> (1ra ed., pp. 51–63).\nPrometeo Editores - Unión Regional de Porcicultores de Jalisco.\n<a href="https://urpj.org.mx/wp-content/uploads/2022/05/La-produccion-porcicola-en-Jalisco-y-su-situacion-ante-las-enfermedades-virales-endemicas_compressed-1.pdf" rel="noopener noreferrer" target="_blank">PDF</a>',
-      es: '<b>Galindo-Barboza, A. J.</b>\n<strong>(2022). Cuantificación de las principales enfermedades virales endémicas de Jalisco.</strong>\nIn <em>La producción porcícola en Jalisco y su situación ante las enfermedades virales endémicas</em> (1ra ed., pp. 51–63).\nPrometeo Editores - Unión Regional de Porcicultores de Jalisco.\n<a href="https://urpj.org.mx/wp-content/uploads/2022/05/La-produccion-porcicola-en-Jalisco-y-su-situacion-ante-las-enfermedades-virales-endemicas_compressed-1.pdf" rel="noopener noreferrer" target="_blank">PDF</a>',
-    },
-    {
-      category: "book",
-      year: 2022,
-      en: '<b>Galindo-Barboza, A. J.</b>\n<strong>(2022). Aplicación de prácticas de bioseguridad en granjas de Jalisco.</strong>\nIn <em>La producción porcícola en Jalisco y su situación ante las enfermedades virales endémicas</em> (1ra ed., pp. 51–63).\nPrometeo Editores - Unión Regional de Porcicultores de Jalisco.\n<a href="https://urpj.org.mx/wp-content/uploads/2022/05/La-produccion-porcicola-en-Jalisco-y-su-situacion-ante-las-enfermedades-virales-endemicas_compressed-1.pdf" rel="noopener noreferrer" target="_blank">PDF</a>',
-      es: '<b>Galindo-Barboza, A. J.</b>\n<strong>(2022). Aplicación de prácticas de bioseguridad en granjas de Jalisco.</strong>\nIn <em>La producción porcícola en Jalisco y su situación ante las enfermedades virales endémicas</em> (1ra ed., pp. 51–63).\nPrometeo Editores - Unión Regional de Porcicultores de Jalisco.\n<a href="https://urpj.org.mx/wp-content/uploads/2022/05/La-produccion-porcicola-en-Jalisco-y-su-situacion-ante-las-enfermedades-virales-endemicas_compressed-1.pdf" rel="noopener noreferrer" target="_blank">PDF</a>',
-    },
-  ],
-
-  // ==========================================================
   // PONENCIAS Y CONGRESOS
   // ==========================================================
 
