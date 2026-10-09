@@ -178,23 +178,31 @@
         </div>
       </section>
       <section class="section">
-        <div class="container content-stack">
-          <section class="content-block">
-            <h2>Invited and keynote talks</h2>
-            <div data-collection="talks" data-category="invited" data-filter-mode="year">
-              <div class="filter-bar" data-filters></div>
-              <div data-fallback><p>Selected talks are loaded from the canonical professional source.</p></div>
-              <div data-dynamic hidden></div>
-            </div>
-          </section>
-          <section class="content-block">
-            <h2>Conference contributions</h2>
-            <div data-collection="talks" data-category="conference" data-filter-mode="year">
-              <div class="filter-bar" data-filters></div>
-              <div data-fallback><p>Published conference contributions are loaded from the canonical bibliography and their associated resources.</p></div>
-              <div data-dynamic hidden></div>
-            </div>
-          </section>
+        <div class="container content-layout">
+          <nav class="section-nav" aria-label="On this page">
+            <p>Sections</p>
+            <a href="#invited-talks">Invited and keynote talks</a>
+            <a href="#conference-contributions">Conference contributions</a>
+          </nav>
+
+          <div class="content-stack">
+            <section id="invited-talks" class="content-block">
+              <h2>Invited and keynote talks</h2>
+              <div data-collection="talks" data-category="invited" data-filter-mode="year">
+                <div class="filter-bar" data-filters></div>
+                <div data-fallback><p>Selected talks are loaded from the canonical professional source.</p></div>
+                <div data-dynamic hidden></div>
+              </div>
+            </section>
+            <section id="conference-contributions" class="content-block">
+              <h2>Conference contributions</h2>
+              <div data-collection="talks" data-category="conference" data-filter-mode="year">
+                <div class="filter-bar" data-filters></div>
+                <div data-fallback><p>Published conference contributions are loaded from the canonical bibliography and their associated resources.</p></div>
+                <div data-dynamic hidden></div>
+              </div>
+            </section>
+          </div>
         </div>
       </section>
     </main>
