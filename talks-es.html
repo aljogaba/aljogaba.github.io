@@ -181,23 +181,31 @@
         </div>
       </section>
       <section class="section">
-        <div class="container content-stack">
-          <section class="content-block">
-            <h2>Ponencias invitadas y magistrales</h2>
-            <div data-collection="talks" data-category="invited" data-filter-mode="year">
-              <div class="filter-bar" data-filters></div>
-              <div data-fallback><p>Las ponencias seleccionadas se cargan desde la fuente profesional canónica.</p></div>
-              <div data-dynamic hidden></div>
-            </div>
-          </section>
-          <section class="content-block">
-            <h2>Contribuciones en congresos</h2>
-            <div data-collection="talks" data-category="conference" data-filter-mode="year">
-              <div class="filter-bar" data-filters></div>
-              <div data-fallback><p>Las contribuciones publicadas se cargan desde la bibliografía canónica y sus recursos asociados.</p></div>
-              <div data-dynamic hidden></div>
-            </div>
-          </section>
+        <div class="container content-layout">
+          <nav class="section-nav" aria-label="En esta página">
+            <p>Secciones</p>
+            <a href="#invited-talks">Ponencias invitadas y magistrales</a>
+            <a href="#conference-contributions">Contribuciones en congresos</a>
+          </nav>
+
+          <div class="content-stack">
+            <section id="invited-talks" class="content-block">
+              <h2>Ponencias invitadas y magistrales</h2>
+              <div data-collection="talks" data-category="invited" data-filter-mode="year">
+                <div class="filter-bar" data-filters></div>
+                <div data-fallback><p>Las ponencias seleccionadas se cargan desde la fuente profesional canónica.</p></div>
+                <div data-dynamic hidden></div>
+              </div>
+            </section>
+            <section id="conference-contributions" class="content-block">
+              <h2>Contribuciones en congresos</h2>
+              <div data-collection="talks" data-category="conference" data-filter-mode="year">
+                <div class="filter-bar" data-filters></div>
+                <div data-fallback><p>Las contribuciones publicadas se cargan desde la bibliografía canónica y sus recursos asociados.</p></div>
+                <div data-dynamic hidden></div>
+              </div>
+            </section>
+          </div>
         </div>
       </section>
     </main>
