@@ -1,0 +1,55 @@
+name: Cleanup publication fallback data
+
+on:
+  push:
+    paths:
+      - '.github/workflows/cleanup-publication-fallback-data.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Remove migrated publication collection from legacy data
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          path = Path('assets/js/content-data.js')
+          text = path.read_text(encoding='utf-8')
+          start_marker = '  // PUBLICACIONES\n'
+          end_marker = '  // PONENCIAS Y CONGRESOS\n'
+          start = text.find(start_marker)
+          end = text.find(end_marker)
+          if start < 0 or end < 0 or end <= start:
+              raise SystemExit('Could not locate publication fallback block safely')
+
+          replacement = (
+              '  // PUBLICACIONES\n'
+              '  // Migradas a assets/js/canonical-data.js desde la fuente canónica.\n'
+              '  // No mantener una segunda copia manual en este archivo.\n\n'
+          )
+          cleaned = text[:start] + replacement + text[end:]
+          if 'publications:' in cleaned:
+              raise SystemExit('Legacy publications property still present after cleanup')
+          if 'talks:' not in cleaned or 'teaching:' not in cleaned:
+              raise SystemExit('Unexpected damage to neighboring collections')
+          path.write_text(cleaned, encoding='utf-8')
+          PY
+
+      - name: Validate JavaScript
+        run: node --check assets/js/content-data.js
+
+      - name: Commit cleanup
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/js/content-data.js
+          git commit -m 'Remove migrated publication fallback data'
+          git push
