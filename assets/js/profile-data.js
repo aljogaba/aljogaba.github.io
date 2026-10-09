@@ -13,3 +13,4 @@ window.PROFILE_DATA = [
   { id: "PROF-0010", service: "x", label: "X", url: "https://x.com/aljogaba" },
   { id: "PROF-0011", service: "github", label: "GitHub", url: "https://github.com/aljogaba" }
 ];
+
