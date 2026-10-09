@@ -58,7 +58,7 @@
       content="https://aljogaba.github.io/assets/images/jorge-galindo.jpg"
     />
     <link rel="stylesheet" href="assets/css/site.css" />
-    <script type="application/ld+json">
+    <script type="application/ld+json" data-person-schema>
       {
         "@context": "https://schema.org",
         "@graph": [
@@ -73,7 +73,7 @@
             "@type": "ProfilePage",
             "@id": "https://aljogaba.github.io/#profilepage",
             "url": "https://aljogaba.github.io/",
-            "dateModified": "2026-10-07",
+            "dateModified": "2026-10-09",
             "mainEntity": { "@id": "https://aljogaba.github.io/#person" }
           },
           {
@@ -111,19 +111,7 @@
                 "name": "Universidad Autónoma de Yucatán"
               }
             ],
-            "sameAs": [
-              "https://orcid.org/0000-0003-4223-6161",
-              "https://scholar.google.com/citations?user=_pldFgEAAAAJ",
-              "https://www.scopus.com/authid/detail.uri?authorId=36666208000",
-              "https://www.semanticscholar.org/author/2327092786",
-              "https://www.researchgate.net/profile/Alberto-Jorge-Galindo-Barboza-2",
-              "https://www.linkedin.com/in/alberto-jorge-galindo-barboza-89326515b/",
-              "https://sciprofiles.com/profile/galindo-barboza",
-              "https://www.3tres3.com/es-mx/usuarios/perfil/alberto-jorge-galindo-barboza",
-              "https://www.bohrium.com/en/profile/bohrhu77k8do",
-              "https://x.com/aljogaba",
-              "https://github.com/aljogaba"
-            ],
+            "sameAs": [],
             "knowsAbout": [
               "Applied epidemiology in swine health and production",
               "Swine health",
@@ -139,6 +127,7 @@
         ]
       }
     </script>
+    <script defer src="assets/js/profile-data.js"></script>
     <script defer src="assets/js/site.js"></script>
   </head>
   <body>
@@ -377,7 +366,7 @@
           <div class="profile-directory reveal">
             <a
               class="profile-platform"
-              href="https://orcid.org/0000-0003-4223-6161"
+              data-profile-id="PROF-0001"
               target="_blank"
               rel="noopener noreferrer"
               ><img
@@ -394,7 +383,7 @@
             >
             <a
               class="profile-platform"
-              href="https://scholar.google.com/citations?user=_pldFgEAAAAJ"
+              data-profile-id="PROF-0002"
               target="_blank"
               rel="noopener noreferrer"
               ><img
@@ -411,7 +400,7 @@
             >
             <a
               class="profile-platform"
-              href="https://www.scopus.com/authid/detail.uri?authorId=36666208000"
+              data-profile-id="PROF-0003"
               target="_blank"
               rel="noopener noreferrer"
               ><img
@@ -427,7 +416,7 @@
             >
             <a
               class="profile-platform"
-              href="https://www.researchgate.net/profile/Alberto-Jorge-Galindo-Barboza-2"
+              data-profile-id="PROF-0005"
               target="_blank"
               rel="noopener noreferrer"
               ><img
@@ -444,7 +433,7 @@
             >
             <a
               class="profile-platform"
-              href="https://www.linkedin.com/in/alberto-jorge-galindo-barboza-89326515b/"
+              data-profile-id="PROF-0006"
               target="_blank"
               rel="noopener noreferrer"
               ><img
@@ -461,7 +450,7 @@
             >
             <a
               class="profile-platform"
-              href="https://www.semanticscholar.org/author/2327092786"
+              data-profile-id="PROF-0004"
               target="_blank"
               rel="noopener noreferrer"
               ><img
@@ -478,7 +467,7 @@
             >
             <a
               class="profile-platform"
-              href="https://sciprofiles.com/profile/galindo-barboza"
+              data-profile-id="PROF-0007"
               target="_blank"
               rel="noopener noreferrer"
               ><img
@@ -494,7 +483,7 @@
             >
             <a
               class="profile-platform"
-              href="https://www.3tres3.com/es-mx/usuarios/perfil/alberto-jorge-galindo-barboza"
+              data-profile-id="PROF-0008"
               target="_blank"
               rel="noopener noreferrer"
               ><img
@@ -511,7 +500,7 @@
             >
             <a
               class="profile-platform"
-              href="https://www.bohrium.com/en/profile/bohrhu77k8do"
+              data-profile-id="PROF-0009"
               target="_blank"
               rel="noopener noreferrer"
               ><img
@@ -527,7 +516,7 @@
             >
             <a
               class="profile-platform"
-              href="https://x.com/aljogaba"
+              data-profile-id="PROF-0010"
               target="_blank"
               rel="noopener noreferrer"
               ><img
@@ -559,7 +548,7 @@
             >
             <a
               class="profile-platform"
-              href="https://github.com/aljogaba"
+              data-profile-id="PROF-0011"
               target="_blank"
               rel="noopener noreferrer"
               ><img
@@ -725,12 +714,12 @@
         <div class="footer-links">
           <h2>Connect</h2>
           <a
-            href="https://orcid.org/0000-0003-4223-6161"
+            data-profile-id="PROF-0001"
             target="_blank"
             rel="noopener noreferrer"
             >ORCID</a
           ><a
-            href="https://scholar.google.com/citations?user=_pldFgEAAAAJ"
+            data-profile-id="PROF-0002"
             target="_blank"
             rel="noopener noreferrer"
             >Google Scholar</a
