@@ -1,5 +1,5 @@
 // AUTO-GENERATED from perfil-profesional-source. DO NOT EDIT MANUALLY.
-// Generated: 2026-11-14
+// Generated: 2026-11-17
 window.SITE_CONTENT = Object.assign(window.SITE_CONTENT || {}, {
   publications: [
     { id: "PUBMETA-0020", category: "journal", year: 2026, en: "<b>Galindo-Barboza, Alberto Jorge</b>, José Francisco Rivera-Benítez, Jazmín De la Luz-Armendáriz, et al. 2026. “Molecular Variation in Porcine Circovirus Type 2 in Jalisco, Mexico, and Its Potential Impact on Vaccine Efficacy.” <em>Vaccines</em> 14 (7). <a href=\"https://doi.org/10.3390/vaccines14070564\" target=\"_blank\" rel=\"noopener noreferrer\">DOI ↗</a>.", es: "<b>Galindo-Barboza, Alberto Jorge</b>, José Francisco Rivera-Benítez, Jazmín De la Luz-Armendáriz, et al. 2026. “Molecular Variation in Porcine Circovirus Type 2 in Jalisco, Mexico, and Its Potential Impact on Vaccine Efficacy”. <em>Vaccines</em> 14 (7). <a href=\"https://doi.org/10.3390/vaccines14070564\" target=\"_blank\" rel=\"noopener noreferrer\">DOI ↗</a>." },
