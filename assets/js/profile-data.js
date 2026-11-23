@@ -1,5 +1,5 @@
 // AUTO-GENERATED from data/profiles.yml. DO NOT EDIT MANUALLY.
-// Generated: 2026-11-17
+// Generated: 2026-11-23
 window.PROFILE_DATA = [
   { id: "PROF-0001", service: "orcid", label: "ORCID", url: "https://orcid.org/0000-0003-4223-6161" },
   { id: "PROF-0002", service: "google_scholar", label: "Google Scholar", url: "https://scholar.google.com/citations?user=_pldFgEAAAAJ" },
